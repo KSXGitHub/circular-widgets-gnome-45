@@ -9,7 +9,6 @@ This is a fork of https://github.com/raihan2000/circular-widgets with GNOME 45 s
 
 Many feature will be added in the future
 
-
 ### Development
 
 ```sh
