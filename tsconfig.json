@@ -4,6 +4,7 @@
     "moduleResolution": "NodeNext",
     "noEmit": true,
     "checkJs": true,
+    "allowJs": true,
     "strict": false,
     "strictNullChecks": true
   },
@@ -11,6 +12,15 @@
     "ambient.d.ts"
   ],
   "exclude": [
-    "generate-ambient.cjs"
+    "correction.cjs"
+  ],
+  "files": [
+    "src/calendarWidgets.js",
+    "src/circleClock.js",
+    "src/circleCpu.js",
+    "src/circleNetSpeed.js",
+    "src/circleRam.js",
+    "src/extension.js",
+    "src/prefs.js"
   ]
 }
