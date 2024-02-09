@@ -1,0 +1,7 @@
+const fs = require('fs')
+const path = require('path')
+const manifest = require('./package.json')
+const types = Object.keys(manifest.dependencies)
+const content = types.map(name => `import '${name}'`).join('\n')
+const targetFile = path.join(__dirname, 'ambient.d.ts')
+fs.writeFileSync(targetFile, content + '\n')

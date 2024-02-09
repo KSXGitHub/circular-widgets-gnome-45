@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "checkJs": true,
+    "strict": false,
+    "strictNullChecks": true
+  },
+  "include": [
+    "ambient.d.ts"
+  ],
+  "exclude": [
+    "generate-ambient.cjs"
+  ]
+}
