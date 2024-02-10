@@ -21,7 +21,12 @@
     "@girs/st-13": "^13.0.0-3.2.7"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "@types/node": "^20.11.17"
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@girs/gnome-shell@45.0.0-beta8": "patches/@girs__gnome-shell@45.0.0-beta8.patch"
+    }
   }
 }
