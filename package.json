@@ -12,7 +12,7 @@
     "@girs/gio-2.0": "^2.78.0-3.2.7",
     "@girs/gjs": "^3.2.7",
     "@girs/glib-2.0": "^2.78.0-3.2.7",
-    "@girs/gnome-shell": "^45.0.0-beta8",
+    "@girs/gnome-shell": "^45.0.0-beta9",
     "@girs/gobject-2.0": "^2.78.0-3.2.7",
     "@girs/meta-13": "^13.0.0-3.2.7",
     "@girs/pango-1.0": "^1.51.0-3.2.7",
@@ -23,10 +23,5 @@
   "devDependencies": {
     "@types/node": "^20.11.17",
     "typescript": "^5.3.3"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@girs/gnome-shell@45.0.0-beta8": "patches/@girs__gnome-shell@45.0.0-beta8.patch"
-    }
   }
 }
