@@ -11,12 +11,12 @@ import Gtk from 'gi://Gtk'
 import Gdk from 'gi://Gdk'
 
 import { ExtensionPreferences, gettext } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'
-import metadata from './metadata.json' with { type: 'json' } // NOTE: If it turns out that GJS doesn't support import assertion, either remove it or hardcode it
+import { type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
 
 export default class CircularWidgetPreferences extends ExtensionPreferences {
   fillPreferencesWindow(window: Adw.PreferencesWindow) {
     const settings = this.getSettings('org.gnome.shell.extensions.circular')
-    const prefs = new PrefsWindow(window, settings)
+    const prefs = new PrefsWindow(window, settings, this.metadata)
     prefs.fillPrefsWindow()
   }
 }
@@ -34,11 +34,13 @@ interface Prop {
 class PrefsWindow {
   private _window: Adw.PreferencesWindow
   private _settings: Gio.Settings
+  private _metadata: ExtensionMetadata
   private headerbar: Gtk.Widget | null
 
-  constructor(window: Adw.PreferencesWindow, settings: Gio.Settings) {
+  constructor(window: Adw.PreferencesWindow, settings: Gio.Settings, metadata: ExtensionMetadata) {
     this._window = window
     this._settings = settings
+    this._metadata = metadata
   }
 
   create_page(title: string) {
@@ -470,7 +472,7 @@ class PrefsWindow {
     {
       let groupAbout = this.create_group(aboutPage, undefined)
       // this.append_info_group(groupAbout, Me.metadata.name, Me.metadata.version.toString())
-      this.append_info_group(groupAbout, metadata.name, metadata.version.toString())
+      this.append_info_group(groupAbout, this._metadata.name, this._metadata.version?.toString())
     }
   }
 }
