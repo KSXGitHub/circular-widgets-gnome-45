@@ -220,7 +220,7 @@ class PrefsWindow {
     this.append_row(group, title, chooser)
   }
 
-  append_info_group(group, name, title) {
+  append_info_group(group: Adw.PreferencesGroup, name: string, title: string) {
     let adw_group = new Adw.PreferencesGroup()
     let infoBox = new Gtk.Box({
       orientation: Gtk.Orientation.VERTICAL,
@@ -472,7 +472,7 @@ class PrefsWindow {
     {
       let groupAbout = this.create_group(aboutPage, undefined)
       // this.append_info_group(groupAbout, Me.metadata.name, Me.metadata.version.toString())
-      this.append_info_group(groupAbout, this._metadata.name, this._metadata.version?.toString())
+      this.append_info_group(groupAbout, this._metadata.name, this._metadata.version!.toString())
     }
   }
 }
