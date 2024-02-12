@@ -152,7 +152,7 @@ class PrefsWindow {
     this.append_row(group, title, spin)
   }
 
-  append_color_button(group, title, key, color) {
+  append_color_button(group: Adw.PreferencesGroup, title: string, key: string, color: string) {
     let rgba = new Gdk.RGBA()
     rgba.parse(color)
     let colorButton = new Gtk.ColorButton({
@@ -264,7 +264,7 @@ class PrefsWindow {
         groupClockRing,
         'Second Ring Color',
         'clock-sec-color',
-        this._settings.get_string('clock-sec-color'),
+        this._settings.get_string('clock-sec-color')!,
       )
       this.append_switch(groupClockRing, 'Hide Minute Ring', 'clock-min-ring')
       this.append_spin_button(groupClockRing, 'Minute Ring Radius', true, 'clock-min-ring-radius', 1, 99.5, 0.1)
@@ -273,7 +273,7 @@ class PrefsWindow {
         groupClockRing,
         'Minute Ring Color',
         'clock-min-color',
-        this._settings.get_string('clock-min-color'),
+        this._settings.get_string('clock-min-color')!,
       )
       this.append_switch(groupClockRing, 'Hide Hour Ring', 'clock-hour-ring')
       this.append_spin_button(groupClockRing, 'Hour Ring Radius', true, 'clock-hour-ring-radius', 1, 99.5, 0.1)
@@ -282,7 +282,7 @@ class PrefsWindow {
         groupClockRing,
         'Hour Ring Color',
         'clock-hour-color',
-        this._settings.get_string('clock-hour-color'),
+        this._settings.get_string('clock-hour-color')!,
       )
       //    		this.append_spin_button(groupClockRing,'Line Width',false,'clock-line-width',1,15,1);
       //    		this.append_switch(groupClockRing,'Show Inner Circle','clock-inner-circle');
@@ -295,7 +295,7 @@ class PrefsWindow {
         groupClockHand,
         'Second Hand Color',
         'clock-sec-hand-color',
-        this._settings.get_string('clock-sec-hand-color'),
+        this._settings.get_string('clock-sec-hand-color')!,
       )
       this.append_switch(groupClockHand, 'Hide Minute Hand', 'clock-min-hand')
       this.append_spin_button(groupClockHand, 'Minute Hand Height', true, 'clock-min-hand-height', 1, 100, 0.1)
@@ -304,7 +304,7 @@ class PrefsWindow {
         groupClockHand,
         'Minute Hand Color',
         'clock-min-hand-color',
-        this._settings.get_string('clock-min-hand-color'),
+        this._settings.get_string('clock-min-hand-color')!,
       )
       this.append_switch(groupClockHand, 'Hide Hour Hand', 'clock-hour-hand')
       this.append_spin_button(groupClockHand, 'Hour Hand Height', true, 'clock-hour-hand-height', 1, 100, 0.1)
@@ -313,7 +313,7 @@ class PrefsWindow {
         groupClockHand,
         'Hour Hand Color',
         'clock-hour-hand-color',
-        this._settings.get_string('clock-hour-hand-color'),
+        this._settings.get_string('clock-hour-hand-color')!,
       )
 
       let groupClockText = this.create_group(clockWidget, 'Clock Text')
@@ -323,7 +323,7 @@ class PrefsWindow {
         groupClockText,
         'Text Color',
         'clock-text-color',
-        this._settings.get_string('clock-text-color'),
+        this._settings.get_string('clock-text-color')!,
       )
       this.append_font_chooser(groupClockText, 'Text Font', 'clock-text-font')
     }
@@ -353,7 +353,7 @@ class PrefsWindow {
         groupCpuRing,
         'Ring Color',
         'cpu-line-color',
-        this._settings.get_string('cpu-line-color'),
+        this._settings.get_string('cpu-line-color')!,
       )
 
       let groupCpuText = this.create_group(cpuWidget, 'CPU Text')
@@ -367,7 +367,7 @@ class PrefsWindow {
         groupCpuText,
         'Text Color',
         'cpu-text-color',
-        this._settings.get_string('cpu-text-color'),
+        this._settings.get_string('cpu-text-color')!,
       )
     }
 
@@ -396,7 +396,7 @@ class PrefsWindow {
         groupRamRing,
         'Ring Color',
         'ram-line-color',
-        this._settings.get_string('ram-line-color'),
+        this._settings.get_string('ram-line-color')!,
       )
 
       let groupRamText = this.create_group(ramWidget, 'RAM Text')
@@ -410,7 +410,7 @@ class PrefsWindow {
         groupRamText,
         'Text Color',
         'ram-text-color',
-        this._settings.get_string('ram-text-color'),
+        this._settings.get_string('ram-text-color')!,
       )
     }
 
@@ -437,7 +437,7 @@ class PrefsWindow {
         groupNetSpeedRing,
         'Down Ring Color',
         'netspeed-down-ring-color',
-        this._settings.get_string('netspeed-down-ring-color'),
+        this._settings.get_string('netspeed-down-ring-color')!,
       )
       this.append_spin_button(groupNetSpeedRing, 'Upload Ring Width', false, 'netspeed-up-ring-width', 1, 74.5, 0.1)
       this.append_spin_button(groupNetSpeedRing, 'Upload Ring Radius', true, 'netspeed-up-ring-radius', 1, 74.5, 0.1)
@@ -445,7 +445,7 @@ class PrefsWindow {
         groupNetSpeedRing,
         'Upload Ring Color',
         'netspeed-up-ring-color',
-        this._settings.get_string('netspeed-up-ring-color'),
+        this._settings.get_string('netspeed-up-ring-color')!,
       )
 
       let groupNetSpeedText = this.create_group(netSpeedWidget, 'Net Speed Text')
@@ -456,7 +456,7 @@ class PrefsWindow {
         groupNetSpeedText,
         'Text Color',
         'netspeed-text-color',
-        this._settings.get_string('netspeed-text-color'),
+        this._settings.get_string('netspeed-text-color')!,
       )
     }
 
