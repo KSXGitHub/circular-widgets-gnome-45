@@ -5,7 +5,8 @@
     "noEmit": true,
     "strict": false,
     "strictNullChecks": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true
   },
   "exclude": [
     "correction.cjs"
