@@ -29,9 +29,8 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
 //       super._init({
 //         reactive: true,
 //       })
-export class calendarWidgets extends Extension {
+export class calendarWidgets extends St.BoxLayout {
 // export class calendarWidgets extends St.BoxLayout {
-  private _boxLayout: St.BoxLayout
   private weekdayAbbr: string[]
   private _weekStart: number
   private _Months: string[]
@@ -58,13 +57,8 @@ export class calendarWidgets extends Extension {
   private deltaY: number
   private ignoreUpdatePosition: boolean
 
-  constructor (metadata: ExtensionMetadata) {
-      // super({
-      //   reactive: true,
-      // })
-      super(metadata)
-      /** @member {St.BoxLayout} */
-      this._boxLayout = new St.BoxLayout({
+  constructor (settings: Gio.Settings) {
+      super({
         reactive: true,
       })
       this.weekdayAbbr = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
@@ -84,7 +78,7 @@ export class calendarWidgets extends Extension {
         'December',
       ]
       // this._settings = ExtensionUtils.getSettings()
-      this._settings = this.getSettings()
+      this._settings = settings
 
       this._calendar = new St.Widget({
         style_class: 'calendar-wd',
@@ -98,7 +92,7 @@ export class calendarWidgets extends Extension {
       this._settings.connect('changed::calendar-location', () => this.setPosition())
 
       // // this._draggable = DND.makeDraggable(this)
-      // this._draggable = DND.makeDraggable(this._boxLayout, undefined)
+      // this._draggable = DND.makeDraggable(this, undefined)
       // // @ts-ignore
       // this._draggable._animateDragEnd = eventTime => {
       //   // @ts-ignore
@@ -114,9 +108,9 @@ export class calendarWidgets extends Extension {
     }
 
     _toggleShow() {
-      this._boxLayout.remove_all_children()
+      this.remove_all_children()
       if (!this._settings.get_boolean('hide-calendar-widget')) {
-        this._boxLayout.add_child(this._calendar)
+        this.add_child(this._calendar)
       }
 
       this._buildHeader()
@@ -211,13 +205,13 @@ export class calendarWidgets extends Extension {
     }
 
     _getMetaRectForCoords(x, y) {
-      this._boxLayout.get_allocation_box()
+      this.get_allocation_box()
       // let rect = new Meta.Rectangle(0, 0, 0, 0)
       //
       // ;[rect.x, rect.y] = [x, y]
       // ;[rect.width, rect.height] = this.get_transformed_size()
       // return rect
-      const [width, height] = this._boxLayout.get_transformed_size()
+      const [width, height] = this.get_transformed_size()
       return new Mtk.Rectangle(x, y, width, height)
     }
 
@@ -265,9 +259,9 @@ export class calendarWidgets extends Extension {
       if (typeof y !== 'number') {
         throw new TypeError('Invalid type for `calendar-location[1]`')
       }
-      this._boxLayout.set_position(x, y)
+      this.set_position(x, y)
 
-      if (!this._boxLayout.get_parent()) {
+      if (!this.get_parent()) {
         return
       }
 
@@ -296,15 +290,15 @@ export class calendarWidgets extends Extension {
     //   // this._dragMonitor = this._onDragMotion(this)
     //   DND.addDragMonitor(this._dragMonitor!)
 
-    //   let p = this._boxLayout.get_transformed_position()
+    //   let p = this.get_transformed_position()
     //   this.startX = this.oldX = p[0]
     //   this.startY = this.oldY = p[1]
 
     //   // this.get_allocation_box()
     //   // this.rowHeight = this.height
     //   // this.rowWidth = this.width
-    //   const allocationBox = this._boxLayout.get_allocation_box()
-    //   // this._boxLayout.set_allocation(allocationBox)
+    //   const allocationBox = this.get_allocation_box()
+    //   // this.set_allocation(allocationBox)
     //   this.rowHeight = allocationBox.get_height()
     //   this.rowWidth = allocationBox.get_width()
     // }
@@ -313,7 +307,7 @@ export class calendarWidgets extends Extension {
     //   this.deltaX = dragEvent.x - (dragEvent.x - this.oldX)
     //   this.deltaY = dragEvent.y - (dragEvent.y - this.oldY)
 
-    //   let p = this._boxLayout.get_transformed_position()
+    //   let p = this.get_transformed_position()
     //   this.oldX = p[0]
     //   this.oldY = p[1]
 
@@ -326,7 +320,7 @@ export class calendarWidgets extends Extension {
     //     this._dragMonitor = null
     //   }
 
-    //   this._boxLayout.set_position(this.deltaX, this.deltaY)
+    //   this.set_position(this.deltaX, this.deltaY)
 
     //   this.ignoreUpdatePosition = true
     //   this._settings.set_value('calendar-location', new GLib.Variant('(ii)', [this.deltaX, this.deltaY]))

@@ -23,8 +23,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
 
 // var Clock = GObject.registerClass(
 //   class circleClock extends St.BoxLayout {
-  export class circleClock extends Extension {
-    private _boxLayout: St.BoxLayout
+  export class circleClock extends St.BoxLayout {
     private _settings: Gio.Settings
     private _actor: St.DrawingArea
     private _draggable: DND._Draggable
@@ -43,21 +42,20 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
     private _dragMonitor: { dragMotion: any }
 
     // _init() {
-    constructor(metadata: ExtensionMetadata) {
+    constructor(settings: Gio.Settings) {
       // super._init({
       //   reactive: true,
       // })
-      super(metadata)
-
-      this._boxLayout = new St.BoxLayout({
+      super({
         reactive: true,
       })
-      this._settings = this.getSettings()
+
+      this._settings = settings
       this._actor = new St.DrawingArea()
       this._actor.connect('repaint', area => this.draw_stuff(area))
       this._updateSettings()
 
-      // this._draggable = DND.makeDraggable(this._boxLayout, null)
+      // this._draggable = DND.makeDraggable(this, null)
       // this._draggable._animateDragEnd = eventTime => {
       //   this._draggable._animationInProgress = true
       //   this._draggable._onAnimationComplete(this._draggable._dragActor, eventTime)
@@ -71,9 +69,9 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
 
     _settingsChanged() {
       this.actor_init()
-      this._boxLayout.remove_all_children()
+      this.remove_all_children()
       if (!this._settings.get_boolean('hide-clock-widget')) {
-        this._boxLayout.add_child(this._actor)
+        this.add_child(this._actor)
       }
       this.update()
     }
@@ -285,8 +283,8 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
     }
 
     _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
-      const box = this._boxLayout.get_allocation_box()
-      const [width, height] = this._boxLayout.get_transformed_size()
+      const box = this.get_allocation_box()
+      const [width, height] = this.get_transformed_size()
       return new Mtk.Rectangle(x, y, width, height)
     }
 
@@ -329,7 +327,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       }
       let [x, y] = circularClockPosition
 
-      if (!this._boxLayout.get_parent()) {
+      if (!this.get_parent()) {
         return
       }
 
