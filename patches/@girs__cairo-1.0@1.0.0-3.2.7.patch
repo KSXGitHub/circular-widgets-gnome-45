@@ -1,12 +1,13 @@
 diff --git a/cairo-1.0.d.ts b/cairo-1.0.d.ts
-index 1b04741e0e3669d7dd43debf539b9bb10ed4af54..1bd91699b6fabab8bd8274c5c3851c1806318e2e 100644
+index 1b04741e0e3669d7dd43debf539b9bb10ed4af54..e72b0cd98630f503bd559ec16e9f9d5122090911 100644
 --- a/cairo-1.0.d.ts
 +++ b/cairo-1.0.d.ts
-@@ -247,6 +247,21 @@ function image_surface_create(): void
+@@ -247,6 +247,22 @@ function image_surface_create(): void
  // ...
  
  interface Context {
 +    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number): void
++    fill(): void
 +    restore(): void
 +    lineTo(x: number, y: number): void
 +    moveTo(x: number, y: number): void
