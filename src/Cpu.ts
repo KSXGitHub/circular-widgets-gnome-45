@@ -25,7 +25,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 // var Cpu = GObject.registerClass(
-  export class circleCpu extends St.BoxLayout {
+  export class Cpu extends St.BoxLayout {
     private _settings: Gio.Settings
     private lastCPUTotal: number
     private lastCPUUsed: number
@@ -337,3 +337,5 @@ import getSettingPairNumbers from './getSettingPairNumbers.js'
 //   },
 // )
   }
+
+export default Cpu

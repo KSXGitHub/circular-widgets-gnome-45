@@ -25,7 +25,7 @@ import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 // var Clock = GObject.registerClass(
 //   class circleClock extends St.BoxLayout {
-  export class circleClock extends St.BoxLayout {
+  export class Clock extends St.BoxLayout {
     private _settings: Gio.Settings
     private _actor: St.DrawingArea
     private _draggable: DND._Draggable
@@ -427,3 +427,5 @@ import getSettingPairNumbers from './getSettingPairNumbers.js'
 //   },
 // )
   }
+
+export default Clock

@@ -31,7 +31,7 @@ import getSettingPairNumbers from './getSettingPairNumbers.js'
 //       super._init({
 //         reactive: true,
 //       })
-export class calendarWidgets extends St.BoxLayout {
+export class Calendar extends St.BoxLayout {
 // export class calendarWidgets extends St.BoxLayout {
   private weekdayAbbr: string[]
   private _weekStart: number
@@ -325,3 +325,5 @@ export class calendarWidgets extends St.BoxLayout {
   }
 //   },
 // )
+
+export default Calendar
