@@ -43,7 +43,7 @@ class PrefsWindow {
     this._metadata = metadata
   }
 
-  create_page(title: string) {
+  create_page(title: string): Adw.PreferencesPage {
     const page = new Adw.PreferencesPage({
       title: title,
     })
@@ -74,8 +74,8 @@ class PrefsWindow {
   }
 
   // create a new Adw.PreferencesGroup and add it to a prefsPage
-  create_group(page: Adw.PreferencesPage, title: string | undefined) {
-    let group
+  create_group(page: Adw.PreferencesPage, title?: string): Adw.PreferencesGroup {
+    let group: Adw.PreferencesGroup
     if (title !== undefined) {
       group = new Adw.PreferencesGroup({
         title: title,
@@ -89,7 +89,7 @@ class PrefsWindow {
     return group
   }
 
-  append_row(group: Adw.PreferencesGroup, title: string, widget: Gtk.Widget) {
+  append_row(group: Adw.PreferencesGroup, title: string, widget: Gtk.Widget): void {
     let row = new Adw.ActionRow({
       title: title,
     })
@@ -98,7 +98,7 @@ class PrefsWindow {
     row.activatable_widget = widget
   }
 
-  append_rows(group: Adw.PreferencesGroup, title: string, wd1: Gtk.Widget, wd2: Gtk.Widget) {
+  append_rows(group: Adw.PreferencesGroup, title: string, wd1: Gtk.Widget, wd2: Gtk.Widget): void {
     let row = new Adw.ActionRow({
       title: title,
     })
@@ -125,7 +125,7 @@ class PrefsWindow {
   }
 
   // create a new Adw.ActionRow to insert an option into a prefsGroup
-  append_switch(group: Adw.PreferencesGroup, title: string, key: string) {
+  append_switch(group: Adw.PreferencesGroup, title: string, key: string): void {
     let button = new Gtk.Switch({
       active: key as any, // What the hell? Why assign a string to a boolean? Is this even necessary?
       valign: Gtk.Align.CENTER,
@@ -141,7 +141,7 @@ class PrefsWindow {
     this.append_row(group, title, button)
   }
 
-  append_spin_button(group: Adw.PreferencesGroup, title: string, is_double: boolean, key: string, min: number, max: number, step: number) {
+  append_spin_button(group: Adw.PreferencesGroup, title: string, is_double: boolean, key: string, min: number, max: number, step: number): void {
     let v = 0
     if (is_double) {
       v = this._settings.get_double(key)
@@ -154,7 +154,7 @@ class PrefsWindow {
     this.append_row(group, title, spin)
   }
 
-  append_color_button(group: Adw.PreferencesGroup, title: string, key: string, color: string) {
+  append_color_button(group: Adw.PreferencesGroup, title: string, key: string, color: string): void {
     let rgba = new Gdk.RGBA()
     rgba.parse(color)
     let colorButton = new Gtk.ColorButton({
@@ -168,7 +168,7 @@ class PrefsWindow {
     this.append_row(group, title, colorButton)
   }
 
-  append_scale_bar(group: Adw.PreferencesGroup, title: string, key: string, prop?: Partial<Prop>) {
+  append_scale_bar(group: Adw.PreferencesGroup, title: string, key: string, prop?: Partial<Prop>): void {
     // prop = Params.parse(prop, {
     //   min: 0,
     //   max: 100,
@@ -206,7 +206,7 @@ class PrefsWindow {
     this.append_row(group, title, bar)
   }
 
-  append_font_chooser(group: Adw.PreferencesGroup, title: string, key: string) {
+  append_font_chooser(group: Adw.PreferencesGroup, title: string, key: string): void {
     let Font = this._settings.get_string(key)
     let chooser = new Gtk.FontButton({
       use_size: true,
@@ -220,7 +220,7 @@ class PrefsWindow {
     this.append_row(group, title, chooser)
   }
 
-  append_info_group(group: Adw.PreferencesGroup, name: string, title: string) {
+  append_info_group(group: Adw.PreferencesGroup, name: string, title: string): void {
     let adw_group = new Adw.PreferencesGroup()
     let infoBox = new Gtk.Box({
       orientation: Gtk.Orientation.VERTICAL,
@@ -242,7 +242,7 @@ class PrefsWindow {
     group.add(adw_group)
   }
 
-  fillPrefsWindow() {
+  fillPrefsWindow(): void {
     let clockWidget = this.create_page('Clock')
     {
       let groupClock = this.create_group(clockWidget, undefined)
