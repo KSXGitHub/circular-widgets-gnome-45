@@ -1,0 +1,25 @@
+diff --git a/cairo-1.0.d.ts b/cairo-1.0.d.ts
+index 1b04741e0e3669d7dd43debf539b9bb10ed4af54..3ad73521865774744e6df261c0afe2c5ad881f05 100644
+--- a/cairo-1.0.d.ts
++++ b/cairo-1.0.d.ts
+@@ -247,6 +247,20 @@ function image_surface_create(): void
+ // ...
+ 
+ interface Context {
++    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number): void
++    restore(): void
++    lineTo(x: number, y: number): void
++    moveTo(x: number, y: number): void
++    paint(): void
++    rotate(angle: number): void
++    save(): void
++    setLineCap(lineCap: LineCap): void
++    setLineWidth(width: number): void
++    setOperator(operator: Operator): void
++    setSourceRGBA(red: number, green: number, blue: number, arg3: number): void
++    stroke(): void
++    translate(width: number, height: number): void
++    $dispose(): void
+ }
+ 
+ class Context {

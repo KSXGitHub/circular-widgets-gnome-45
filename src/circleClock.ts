@@ -82,24 +82,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
     }
 
     draw_stuff(area: St.DrawingArea) {
-      interface Context {
-        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number): void
-        restore(): void
-        lineTo(x: number, y: number): void
-        moveTo(x: number, y: number): void
-        paint(): void
-        rotate(angle: number): void
-        save(): void
-        setLineCap(lineCap: Cairo.LineCap): void
-        setLineWidth(width: number): void
-        setOperator(operator: Cairo.Operator): void
-        setSourceRGBA(red: number, green: number, blue: number, arg3: number): void
-        stroke(): void
-        translate(width: number, height: number): void
-        $dispose(): void
-      }
-
-      let cr = area.get_context() as Context // because the type Cairo.Context doesn't have any method definitions
+      let cr = area.get_context()
       let [width, height] = area.get_surface_size()
 
       cr.setOperator(Cairo.Operator.CLEAR)
