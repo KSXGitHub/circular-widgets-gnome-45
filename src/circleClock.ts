@@ -21,6 +21,8 @@ import ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
 
+import getSettingPairNumbers from './getSettingPairNumbers.js'
+
 // var Clock = GObject.registerClass(
 //   class circleClock extends St.BoxLayout {
   export class circleClock extends St.BoxLayout {
@@ -318,14 +320,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
         return
       }
 
-      const circularClockPosition = this._settings.get_value('circular-clock-location').deepUnpack()
-      if (!Array.isArray(circularClockPosition)) {
-        throw new TypeError(`circular-clock-position is not an array: ${circularClockPosition}`)
-      }
-      if (circularClockPosition.length < 2) {
-        throw new TypeError('circular-clock-position must have at least 2 items')
-      }
-      let [x, y] = circularClockPosition
+      let [x, y] = getSettingPairNumbers(this._settings, 'circular-clock-location')
 
       if (!this.get_parent()) {
         return

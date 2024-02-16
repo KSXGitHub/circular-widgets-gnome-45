@@ -23,6 +23,8 @@ import ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
 
+import getSettingPairNumbers from './getSettingPairNumbers.js'
+
 // var calendar = GObject.registerClass(
 //   class calendarWidgets extends St.BoxLayout {
 //     _init() {
@@ -245,20 +247,7 @@ export class calendarWidgets extends St.BoxLayout {
         return
       }
 
-      let calendarLocation = this._settings.get_value('calendar-location').deepUnpack()
-      if (!Array.isArray(calendarLocation)) {
-        throw new TypeError('Invalid value for `calendar-location`')
-      }
-      if (calendarLocation.length !== 2) {
-        throw new TypeError('Invalid length for `calendar-location`')
-      }
-      let [x, y] = calendarLocation
-      if (typeof x !== 'number') {
-        throw new TypeError('Invalid type for `calendar-location[0]`')
-      }
-      if (typeof y !== 'number') {
-        throw new TypeError('Invalid type for `calendar-location[1]`')
-      }
+      let [x, y] = getSettingPairNumbers(this._settings, 'calendar-location')
       this.set_position(x, y)
 
       if (!this.get_parent()) {
