@@ -6,13 +6,13 @@ settings:
 
 patchedDependencies:
   '@girs/cairo-1.0@1.0.0-3.2.7':
-    hash: tjj5apvmj4j2m6o5qz43ts2som
+    hash: valnlkglffdmuxoq5wtn6vl3ny
     path: patches/@girs__cairo-1.0@1.0.0-3.2.7.patch
 
 dependencies:
   '@girs/cairo-1.0':
     specifier: ^1.0.0-3.2.7
-    version: 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+    version: 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
   '@girs/clutter-13':
     specifier: ^13.0.0-3.2.7
     version: 13.0.0-3.2.7
@@ -69,7 +69,7 @@ packages:
   /@girs/adw-1@1.4.2-3.2.7:
     resolution: {integrity: sha512-ULD9Z8U6DFdrN5oD8kfu5Q2OEh6HzK2fQu0ujr8FHn7WSlq+/BMV48xUOE26JnFyIZQumiP/RKXl6flMWCIY4Q==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdk-4.0': 4.0.0-3.2.7
       '@girs/gdkpixbuf-2.0': 2.0.0-3.2.7
@@ -94,7 +94,7 @@ packages:
       '@girs/gobject-2.0': 2.78.0-3.2.7
     dev: false
 
-  /@girs/cairo-1.0@1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som):
+  /@girs/cairo-1.0@1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny):
     resolution: {integrity: sha512-WeAyTY8tUoVe8W1IDbxOYDczWyUotg/7sjzWPv5TXQJJAe3vZ6TfkYPSIlnQHkQ43XfWhSa0JA2s5Oitttdu0g==}
     dependencies:
       '@girs/gjs': 3.2.7
@@ -107,7 +107,7 @@ packages:
     resolution: {integrity: sha512-EAWBXhAyl1+W18mvPd0/awEWV7SqCyhrr6a5JLMxpfPv6JSokAiJcoEhRlR35bkh5HVxSHHWfchn7UKSKtnjeQ==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/clutter-13': 13.0.0-3.2.7
       '@girs/cogl-13': 13.0.0-3.2.7
       '@girs/coglpango-13': 13.0.0-3.2.7
@@ -129,7 +129,7 @@ packages:
     resolution: {integrity: sha512-2fu3+wfZu6E3jBpavdYtX0Zm1SeaI24gjAzPNRlw+MTY0KpJ0ZevSavQ2IbKlLai/wo1YMCUrHmkjhmS6kIDdw==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/cogl-13': 13.0.0-3.2.7
       '@girs/coglpango-13': 13.0.0-3.2.7
       '@girs/freetype2-2.0': 2.0.0-3.2.7
@@ -149,7 +149,7 @@ packages:
   /@girs/cogl-13@13.0.0-3.2.7:
     resolution: {integrity: sha512-oVIqRXYwf0tER8n/Sq0SyRzZm5svCN8/ZDZig33+j3YpW2T2S4zzC2Px2ZlYVExolawh9P6NXUWnRhnPIGyp+Q==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/gjs': 3.2.7
       '@girs/gl-1.0': 1.0.0-3.2.7
       '@girs/glib-2.0': 2.78.0-3.2.7
@@ -169,7 +169,7 @@ packages:
   /@girs/coglpango-13@13.0.0-3.2.7:
     resolution: {integrity: sha512-iiQFWtVYOyyiTiCjBT/g9K0H7cvxG56mEnz+wtrHVYDSrkI029xv+7b+FjOrrzlkoyRr8CfWnTAYHhpmhvatdg==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/cogl-13': 13.0.0-3.2.7
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gio-2.0': 2.78.0-3.2.7
@@ -219,7 +219,7 @@ packages:
   /@girs/gdk-4.0@4.0.0-3.2.7:
     resolution: {integrity: sha512-NULHNgwiLjX3vEWDhxSwEmVrSDv2UZaozZcTg295sRdQ/SrpnT5fYT9iL/HnB7JE2H2SBdYnhUrK3SnvCOCb9g==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdkpixbuf-2.0': 2.0.0-3.2.7
       '@girs/gio-2.0': 2.78.0-3.2.7
@@ -320,7 +320,7 @@ packages:
   /@girs/gnomebg-4.0@4.0.0-3.2.7:
     resolution: {integrity: sha512-IEognkZ33/XpRmkrfXhV+eda4RnJa9rBcN8ACOHoLsSWQfy5VbRBtSPS12R9Qd5cFe2Qv34GKNk+y8AUU1+fGg==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdesktopenums-3.0': 3.0.0-3.2.7
       '@girs/gdk-4.0': 4.0.0-3.2.7
@@ -375,7 +375,7 @@ packages:
   /@girs/gsk-4.0@4.0.0-3.2.7:
     resolution: {integrity: sha512-wwEUJVK7RuSqQdinAqry+jVj1JH5s+EAhJ2l+8St8UV6/ajCxz/yUtt/2ACM0bZ9GJhgzM2+C9C3iBw73ZdFHg==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdk-4.0': 4.0.0-3.2.7
       '@girs/gdkpixbuf-2.0': 2.0.0-3.2.7
@@ -393,7 +393,7 @@ packages:
   /@girs/gtk-4.0@4.12.4-3.2.7:
     resolution: {integrity: sha512-av+FCDNb3AgQKJmlj9ZEj4/umOUafrn9WIOYDG9pGrSBdrkHxg7QucFg8ePteMgkLB32yceL3up8hFU0vVUkYQ==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdk-4.0': 4.0.0-3.2.7
       '@girs/gdkpixbuf-2.0': 2.0.0-3.2.7
@@ -440,7 +440,7 @@ packages:
     resolution: {integrity: sha512-sXvzaAC+9NND/3ma4fMGgrERscbT+j2sGQjsVsLpubzNzWDtOc4AkeV8OD8dopbksnnTS6NA7dbwdpwtDBZ7xA==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/clutter-13': 13.0.0-3.2.7
       '@girs/cogl-13': 13.0.0-3.2.7
       '@girs/coglpango-13': 13.0.0-3.2.7
@@ -464,7 +464,7 @@ packages:
   /@girs/mtk-13@13.0.0-3.2.7:
     resolution: {integrity: sha512-x6s0192AB90AbG6n26nOMS5q1uxxmeWMyStVUUmcdsd7WLW0IVLAGOaPIyB/KS4W2iBIYLOTIzUBfCT5geAsIA==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/gjs': 3.2.7
       '@girs/glib-2.0': 2.78.0-3.2.7
       '@girs/gobject-2.0': 2.78.0-3.2.7
@@ -483,7 +483,7 @@ packages:
   /@girs/pango-1.0@1.51.0-3.2.7:
     resolution: {integrity: sha512-wxVVMrZnaWkgBmvTM4rWE20whh0CTRiXINgmK9V2NOdJHUUD3HqIvRxChG6YJmXQcb9h4Gcgpr+OyP34IgP2Sg==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gio-2.0': 2.78.0-3.2.7
       '@girs/gjs': 3.2.7
@@ -495,7 +495,7 @@ packages:
   /@girs/pangocairo-1.0@1.0.0-3.2.7:
     resolution: {integrity: sha512-94OAV/UOOO9VZ7d2W9D2SB7FIDfuUHESRGWTq1kq0XGL8o9P8Y4sKB7v2y6CRZTs3IML+IBI1qG9BDIdcNXnUA==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gio-2.0': 2.78.0-3.2.7
       '@girs/gjs': 3.2.7
@@ -528,7 +528,7 @@ packages:
     resolution: {integrity: sha512-RrjHDZT8lj3uQ6QUg+Pb3AQOPhfJlPbFADZ/wudL1HdLa3GPNrmR1J7pxzXj5VtGWb9DJFjUnqBIyGU2iLkzlA==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/cally-13': 13.0.0-3.2.7
       '@girs/clutter-13': 13.0.0-3.2.7
       '@girs/cogl-13': 13.0.0-3.2.7
@@ -563,7 +563,7 @@ packages:
   /@girs/shew-0@0.0.0-3.2.7:
     resolution: {integrity: sha512-TwFEU3OEPm05MtLmKTTb2Ekb4xp36So+VMYuy59NASCKFbhr+I9wGDU95ZXeztF0+/8wHQpklX0MG3KrVWmzqw==}
     dependencies:
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/freetype2-2.0': 2.0.0-3.2.7
       '@girs/gdk-4.0': 4.0.0-3.2.7
       '@girs/gdkpixbuf-2.0': 2.0.0-3.2.7
@@ -584,7 +584,7 @@ packages:
     resolution: {integrity: sha512-v39kFYYY3arbNELzseoRuKkN9hJIJG7ZpFbTGwRuB2pB1sfku3WJpfHPALwPg0uCvpDfSTfxTZ2Fg6R3qFWEdA==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
-      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=tjj5apvmj4j2m6o5qz43ts2som)
+      '@girs/cairo-1.0': 1.0.0-3.2.7(patch_hash=valnlkglffdmuxoq5wtn6vl3ny)
       '@girs/cally-13': 13.0.0-3.2.7
       '@girs/clutter-13': 13.0.0-3.2.7
       '@girs/cogl-13': 13.0.0-3.2.7

@@ -38,6 +38,9 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
     private _Gsec: string
     private _Gmin: string
     private _Ghour: string
+    private _ignorePositionUpdate: boolean
+    private isDragging: boolean
+    private _dragMonitor: { dragMotion: any }
 
     // _init() {
     constructor(metadata: ExtensionMetadata) {
@@ -179,7 +182,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
         cr.setSourceRGBA(color.red, color.green, color.blue, color.alpha)
         cr.save()
         let font = this._settings.get_string('clock-text-font')
-        this.text_show(cr, this.clockText, font)
+        this.text_show(cr, this.clockText, font!)
       }
 
       //hour
@@ -270,7 +273,7 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       }
     }
 
-    text_show(cr, showtext, font) {
+    text_show(cr: Cairo.Context, showtext: string, font: string) {
       let pl = PangoCairo.create_layout(cr)
       pl.set_text(showtext, -1)
       pl.set_font_description(Pango.FontDescription.from_string(font))
@@ -281,28 +284,25 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       cr.relMoveTo(w / 2, 0)
     }
 
-    _getMetaRectForCoords(x, y) {
-      this.get_allocation_box()
-      let rect = new Meta.Rectangle()
-
-      ;[rect.x, rect.y] = [x, y]
-      ;[rect.width, rect.height] = this.get_transformed_size()
-      return rect
+    _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
+      const box = this._boxLayout.get_allocation_box()
+      const [width, height] = this._boxLayout.get_transformed_size()
+      return new Mtk.Rectangle(x, y, width, height)
     }
 
-    _getWorkAreaForRect(rect) {
+    _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
       let monitorIndex = global.display.get_monitor_index_for_rect(rect)
       return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
     }
 
-    _isOnScreen(x, y) {
+    _isOnScreen(x: number, y: number): boolean {
       let rect = this._getMetaRectForCoords(x, y)
       let monitorWorkArea = this._getWorkAreaForRect(rect)
 
       return monitorWorkArea.contains_rect(rect)
     }
 
-    _keepOnScreen(x, y) {
+    _keepOnScreen(x: number, y: number): [number, number] {
       let rect = this._getMetaRectForCoords(x, y)
       let monitorWorkArea = this._getWorkAreaForRect(rect)
 
@@ -315,27 +315,33 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       return [x, y]
     }
 
-    setPosition() {
+    setPosition(): void {
       if (this._ignorePositionUpdate) {
         return
       }
 
-      let [x, y] = this._settings.get_value('circular-clock-location').deep_unpack()
-      this.set_position(x, y)
+      const circularClockPosition = this._settings.get_value('circular-clock-location').deepUnpack()
+      if (!Array.isArray(circularClockPosition)) {
+        throw new TypeError(`circular-clock-position is not an array: ${circularClockPosition}`)
+      }
+      if (circularClockPosition.length < 2) {
+        throw new TypeError('circular-clock-position must have at least 2 items')
+      }
+      let [x, y] = circularClockPosition
 
-      if (!this.get_parent()) {
+      if (!this._boxLayout.get_parent()) {
         return
       }
 
       if (!this._isOnScreen(x, y)) {
         ;[x, y] = this._keepOnScreen(x, y)
 
-        this.ease({
-          x,
-          y,
-          duration: 150,
-          mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-        })
+        // this.ease({
+        //   x,
+        //   y,
+        //   duration: 150,
+        //   mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+        // })
 
         this._ignorePositionUpdate = true
         this._settings.set_value('circular-clock-location', new GLib.Variant('(ii)', [x, y]))
@@ -343,52 +349,52 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       }
     }
 
-    _onDragBegin() {
-      this.isDragging = true
-      this._dragMonitor = {
-        dragMotion: this._onDragMotion.bind(this),
-      }
-      DND.addDragMonitor(this._dragMonitor)
+    // _onDragBegin() {
+    //   this.isDragging = true
+    //   this._dragMonitor = {
+    //     dragMotion: this._onDragMotion.bind(this),
+    //   }
+    //   DND.addDragMonitor(this._dragMonitor)
 
-      let p = this.get_transformed_position()
-      this.startX = this.oldX = p[0]
-      this.startY = this.oldY = p[1]
+    //   let p = this.get_transformed_position()
+    //   this.startX = this.oldX = p[0]
+    //   this.startY = this.oldY = p[1]
 
-      this.get_allocation_box()
-      this.rowHeight = this.height
-      this.rowWidth = this.width
-    }
+    //   this.get_allocation_box()
+    //   this.rowHeight = this.height
+    //   this.rowWidth = this.width
+    // }
 
-    _onDragMotion(dragEvent) {
-      this.deltaX = dragEvent.x - (dragEvent.x - this.oldX)
-      this.deltaY = dragEvent.y - (dragEvent.y - this.oldY)
+    // _onDragMotion(dragEvent): DND.DragMotionResult.CONTINUE {
+    //   this.deltaX = dragEvent.x - (dragEvent.x - this.oldX)
+    //   this.deltaY = dragEvent.y - (dragEvent.y - this.oldY)
 
-      let p = this.get_transformed_position()
-      this.oldX = p[0]
-      this.oldY = p[1]
+    //   let p = this.get_transformed_position()
+    //   this.oldX = p[0]
+    //   this.oldY = p[1]
 
-      return DND.DragMotionResult.CONTINUE
-    }
+    //   return DND.DragMotionResult.CONTINUE
+    // }
 
-    _onDragEnd() {
-      if (this._dragMonitor) {
-        DND.removeDragMonitor(this._dragMonitor)
-        this._dragMonitor = null
-      }
+    // _onDragEnd() {
+    //   if (this._dragMonitor) {
+    //     DND.removeDragMonitor(this._dragMonitor)
+    //     this._dragMonitor = null
+    //   }
 
-      this.set_position(this.deltaX, this.deltaY)
+    //   this.set_position(this.deltaX, this.deltaY)
 
-      this.ignoreUpdatePosition = true
-      this._settings.set_value('circular-clock-location', new GLib.Variant('(ii)', [this.deltaX, this.deltaY]))
-      this.ignoreUpdatePosition = false
-    }
+    //   this.ignoreUpdatePosition = true
+    //   this._settings.set_value('circular-clock-location', new GLib.Variant('(ii)', [this.deltaX, this.deltaY]))
+    //   this.ignoreUpdatePosition = false
+    // }
 
-    getDragActor() {
-    }
+    // getDragActor() {
+    // }
 
-    getDragActorSource() {
-      return this
-    }
+    // getDragActorSource() {
+    //   return this
+    // }
 
     _updateSettings() {
       this._settings.connect('changed::circular-clock-location', () => this.setPosition())
@@ -425,5 +431,6 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       this._settings.connect('changed::clock-sec-hand-color', () => this.update())
       this._settings.connect('changed::hide-clock-widget', () => this._settingsChanged())
     }
-  },
-)
+//   },
+// )
+  }
