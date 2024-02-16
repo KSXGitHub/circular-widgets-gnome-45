@@ -271,15 +271,20 @@ import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/e
       this._Gsec = this._Gdate.format('%S')!
       this._Gmin = this._Gdate.format('%M')!
       this._Ghour = this._Gdate.format('%H')!
-      if (this._Ghour > 12) this._Ghour = this._Ghour - 12
+      const hour = Number(this._Ghour)
+      if (hour > 12) {
+        this._Ghour = String(hour - 12)
+      }
 
-      !this._settings.get_boolean('am-or-pm-clock')
-        ? this.clockText = this._Gdate.format('%H:%M')!
-        : (this._Gdate.format('%H') >= 12)
-        ? this.clockText = this._Ghour + ':' + this._Gmin + '\n' + ' PM'
-        : (this._Ghour > 1)
-        ? this.clockText = '12' + this._Gmin + '\n' + ' AM'
-        : this.clockText = this._Ghour + ':' + this._Gmin + '\n' + ' AM'
+      if (!this._settings.get_boolean('am-or-pm-clock')) {
+        this.clockText = this._Gdate.format('%H:%M')!
+      } else if (hour >= 12) {
+        this.clockText = this._Ghour + ':' + this._Gmin + '\n' + ' PM'
+      } else if (hour > 1) {
+        this.clockText = '12' + this._Gmin + '\n' + ' AM'
+      } else {
+        this.clockText = this._Ghour + ':' + this._Gmin + '\n' + ' AM'
+      }
     }
 
     text_show(cr, showtext, font) {
