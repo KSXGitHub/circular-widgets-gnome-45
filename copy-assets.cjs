@@ -11,16 +11,12 @@ const assets = [
   'stylesheet.css',
 ]
 
-// if (!fs.existsSync(dst)) {
-  fs.mkdirSync(dst, { recursive: true })
-// }
+fs.mkdirSync(dst, { recursive: true })
 
 for (const suffix of assets) {
   const srcFile = path.join(src, suffix)
   const dstFile = path.join(dst, suffix)
   console.info(`Copying ${suffix}...`)
-  // if (!fs.existsSync(path.dirname(dstFile))) {
-    fs.mkdirSync(path.dirname(dstFile), { recursive: true })
-  // }
+  fs.mkdirSync(path.dirname(dstFile), { recursive: true })
   fs.copyFileSync(srcFile, dstFile)
 }
