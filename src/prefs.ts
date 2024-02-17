@@ -6,9 +6,9 @@
 // const Me = ExtensionUtils.getCurrentExtension()
 
 import Adw from 'gi://Adw'
+import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
 import Gtk from 'gi://Gtk'
-import Gdk from 'gi://Gdk'
 
 import { ExtensionPreferences, gettext } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'
 import { type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
@@ -141,7 +141,15 @@ class PrefsWindow {
     this.append_row(group, title, button)
   }
 
-  append_spin_button(group: Adw.PreferencesGroup, title: string, is_double: boolean, key: string, min: number, max: number, step: number): void {
+  append_spin_button(
+    group: Adw.PreferencesGroup,
+    title: string,
+    is_double: boolean,
+    key: string,
+    min: number,
+    max: number,
+    step: number,
+  ): void {
     let v = 0
     if (is_double) {
       v = this._settings.get_double(key)
