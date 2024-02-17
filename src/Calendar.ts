@@ -39,7 +39,7 @@ export class Calendar extends St.BoxLayout {
   private deltaY: number
   private ignoreUpdatePosition: boolean
 
-  constructor(settings: Gio.Settings) {
+  public constructor(settings: Gio.Settings) {
     super({
       reactive: true,
     })
@@ -88,7 +88,7 @@ export class Calendar extends St.BoxLayout {
     this.setPosition()
   }
 
-  _toggleShow(): void {
+  private _toggleShow(): void {
     this.remove_all_children()
     if (!this._settings.get_boolean('hide-calendar-widget')) {
       this.add_child(this._calendar)
@@ -98,7 +98,7 @@ export class Calendar extends St.BoxLayout {
     this.update()
   }
 
-  _buildHeader(): void {
+  private _buildHeader(): void {
     // Top line of the calendar '<| September 2009 |>'
     this._topBox = new St.BoxLayout({})
     this._calendar.layout_manager.attach(this._topBox, 0, 0, 7, 1)
@@ -126,7 +126,7 @@ export class Calendar extends St.BoxLayout {
     this._firstDayIndex = this._calendar.get_n_children()
   }
 
-  update(): void {
+  public update(): void {
     this._selectedDate = new Date()
     if (!this._monthLabel) {
       throw new TypeError('_mothLabel was not initialized correctly')
@@ -171,39 +171,39 @@ export class Calendar extends St.BoxLayout {
     }
   }
 
-  _daysInMonth(month: number, year: number) {
+  private _daysInMonth(month: number, year: number) {
     let d = new Date(year, month + 1, 0)
     return d.getDate()
   }
 
-  sameDay(dateA: Date, dateB: Date) {
+  private sameDay(dateA: Date, dateB: Date) {
     return dateA.getFullYear() == dateB.getFullYear() && (dateA.getMonth() == dateB.getMonth()) &&
       (dateA.getDate() == dateB.getDate())
   }
 
-  getMonthsName(date) {
+  private getMonthsName(date) {
     return this._Months[date]
   }
 
-  _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
+  private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
     this.get_allocation_box()
     const [width, height] = this.get_transformed_size()
     return new Mtk.Rectangle(x, y, width, height)
   }
 
-  _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
+  private _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
     let monitorIndex = global.display.get_monitor_index_for_rect(rect)
     return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
   }
 
-  _isOnScreen(x: number, y: number): boolean {
+  private _isOnScreen(x: number, y: number): boolean {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
     return monitorWorkArea.contains_rect(rect)
   }
 
-  _keepOnScreen(x: number, y: number) {
+  private _keepOnScreen(x: number, y: number) {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect) // returns void?
 
@@ -216,7 +216,7 @@ export class Calendar extends St.BoxLayout {
     return [x, y]
   }
 
-  setPosition(): void {
+  private setPosition(): void {
     if (this._ignorePositionUpdate) {
       return
     }

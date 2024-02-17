@@ -26,7 +26,7 @@ export class NetSpeed extends St.BoxLayout {
   private isDragging: boolean
   private _dragMonitor: DND._Draggable
 
-  constructor(settings: Gio.Settings) {
+  public constructor(settings: Gio.Settings) {
     super({
       reactive: true,
     })
@@ -50,7 +50,7 @@ export class NetSpeed extends St.BoxLayout {
     this.setPosition()
   }
 
-  _toggleShow(): void {
+  private _toggleShow(): void {
     this.remove_all_children()
     if (!this._settings.get_boolean('hide-netspeed-widget')) {
       this.add_child(this._actor)
@@ -59,13 +59,13 @@ export class NetSpeed extends St.BoxLayout {
     this.update()
   }
 
-  actor_init(): void {
+  private actor_init(): void {
     this._size = this._settings.get_int('circular-netspeed-size')
     this._actor.width = this._size
     this._actor.height = this._size
   }
 
-  draw_stuff(area: St.DrawingArea): void {
+  private draw_stuff(area: St.DrawingArea): void {
     let cr = area.get_context()
 
     let [width, height] = area.get_surface_size()
@@ -155,12 +155,12 @@ export class NetSpeed extends St.BoxLayout {
     cr.$dispose()
   }
 
-  update(): void {
+  public update(): void {
     this._currentUsage = this.getCurrentNetSpeed()
     this._actor.queue_repaint()
   }
 
-  _controlSpd(i: number): string {
+  private _controlSpd(i: number): string {
     let o: string
     if (i > 1e12) {
       o = (i / 1e12).toFixed(1)
@@ -181,7 +181,7 @@ export class NetSpeed extends St.BoxLayout {
     return i.toFixed(0)
   }
 
-  _shortStr(i: number): string {
+  private _shortStr(i: number): string {
     let o: string
     if (i > 1e12) {
       o = (i / 1e12).toFixed(1)
@@ -203,7 +203,7 @@ export class NetSpeed extends St.BoxLayout {
   }
 
   // See <https://github.com/AlynxZhou/gnome-shell-extension-net-speed>.
-  getCurrentNetSpeed(): { down: number, up: number } {
+  private getCurrentNetSpeed(): { down: number, up: number } {
     const netSpeed = { down: 0, up: 0 }
 
     const inputFile = Gio.File.new_for_path('/proc/net/dev')
@@ -263,7 +263,7 @@ export class NetSpeed extends St.BoxLayout {
     return netSpeed
   }
 
-  text_show(cr: Cairo.Context, showtext: string, font: string): void {
+  private text_show(cr: Cairo.Context, showtext: string, font: string): void {
     let pl = PangoCairo.create_layout(cr)
     pl.set_text(showtext, -1)
     pl.set_font_description(Pango.FontDescription.from_string(font))
@@ -274,25 +274,25 @@ export class NetSpeed extends St.BoxLayout {
     cr.relMoveTo(w / 2, 0)
   }
 
-  _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
+  private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
     this.get_allocation_box()
     const [width, height] = this.get_transformed_size()
     return new Mtk.Rectangle(x, y, width, height)
   }
 
-  _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
+  private _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
     let monitorIndex = global.display.get_monitor_index_for_rect(rect)
     return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
   }
 
-  _isOnScreen(x: number, y: number): boolean {
+  private _isOnScreen(x: number, y: number): boolean {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
     return monitorWorkArea.contains_rect(rect)
   }
 
-  _keepOnScreen(x: number, y: number): [number, number] {
+  private _keepOnScreen(x: number, y: number): [number, number] {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
@@ -305,7 +305,7 @@ export class NetSpeed extends St.BoxLayout {
     return [x, y]
   }
 
-  setPosition(): void {
+  private setPosition(): void {
     if (this._ignorePositionUpdate) {
       return
     }
@@ -380,7 +380,7 @@ export class NetSpeed extends St.BoxLayout {
   //   return this
   // }
 
-  _updateSettings(): void {
+  private _updateSettings(): void {
     this._settings.connect('changed::circular-netspeed-location', () => this.setPosition())
     this._settings.connect('changed::netspeed-up-ring-color', () => this.update())
     this._settings.connect('changed::netspeed-up-ring-width', () => this.update())

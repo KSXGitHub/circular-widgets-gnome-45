@@ -32,7 +32,7 @@ export class Clock extends St.BoxLayout {
   private isDragging: boolean
   private _dragMonitor: { dragMotion: any }
 
-  constructor(settings: Gio.Settings) {
+  public constructor(settings: Gio.Settings) {
     super({
       reactive: true,
     })
@@ -54,7 +54,7 @@ export class Clock extends St.BoxLayout {
     this.setPosition()
   }
 
-  _settingsChanged(): void {
+  private _settingsChanged(): void {
     this.actor_init()
     this.remove_all_children()
     if (!this._settings.get_boolean('hide-clock-widget')) {
@@ -63,13 +63,13 @@ export class Clock extends St.BoxLayout {
     this.update()
   }
 
-  actor_init(): void {
+  private actor_init(): void {
     this._size = this._settings.get_int('circular-clock-size')
     this._actor.height = this._size
     this._actor.width = this._size
   }
 
-  draw_stuff(area: St.DrawingArea): void {
+  private draw_stuff(area: St.DrawingArea): void {
     let cr = area.get_context()
     let [width, height] = area.get_surface_size()
 
@@ -232,13 +232,13 @@ export class Clock extends St.BoxLayout {
     cr.$dispose()
   }
 
-  update(): void {
+  public update(): void {
     this._Gdate = GLib.DateTime.new_now_local()
     this.update_text()
     this._actor.queue_repaint()
   }
 
-  update_text(): void {
+  private update_text(): void {
     this._Gsec = this._Gdate.format('%S')!
     this._Gmin = this._Gdate.format('%M')!
     this._Ghour = this._Gdate.format('%H')!
@@ -258,7 +258,7 @@ export class Clock extends St.BoxLayout {
     }
   }
 
-  text_show(cr: Cairo.Context, showtext: string, font: string): void {
+  private text_show(cr: Cairo.Context, showtext: string, font: string): void {
     let pl = PangoCairo.create_layout(cr)
     pl.set_text(showtext, -1)
     pl.set_font_description(Pango.FontDescription.from_string(font))
@@ -269,25 +269,25 @@ export class Clock extends St.BoxLayout {
     cr.relMoveTo(w / 2, 0)
   }
 
-  _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
+  private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
     const box = this.get_allocation_box()
     const [width, height] = this.get_transformed_size()
     return new Mtk.Rectangle(x, y, width, height)
   }
 
-  _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
+  private _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
     let monitorIndex = global.display.get_monitor_index_for_rect(rect)
     return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
   }
 
-  _isOnScreen(x: number, y: number): boolean {
+  private _isOnScreen(x: number, y: number): boolean {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
     return monitorWorkArea.contains_rect(rect)
   }
 
-  _keepOnScreen(x: number, y: number): [number, number] {
+  private _keepOnScreen(x: number, y: number): [number, number] {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
@@ -300,7 +300,7 @@ export class Clock extends St.BoxLayout {
     return [x, y]
   }
 
-  setPosition(): void {
+  private setPosition(): void {
     if (this._ignorePositionUpdate) {
       return
     }
@@ -374,7 +374,7 @@ export class Clock extends St.BoxLayout {
   //   return this
   // }
 
-  _updateSettings() {
+  private _updateSettings() {
     this._settings.connect('changed::circular-clock-location', () => this.setPosition())
     this._settings.connect('changed::am-or-pm-clock', () => this.update_text())
     this._settings.connect('changed::clock-sec-hand-height', () => this.update())

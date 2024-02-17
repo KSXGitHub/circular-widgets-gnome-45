@@ -23,7 +23,7 @@ export default class CircularWidgetExtension extends Extension {
     _backgroundGroup: Meta.BackgroundGroup // force access to protected member
   }
 
-  enable(): void {
+  public enable(): void {
     const settings = this._settings = this.getSettings()
 
     const calendar = this._calendar = new Calendar(settings)
@@ -49,7 +49,7 @@ export default class CircularWidgetExtension extends Extension {
     })
   }
 
-  disable(): void {
+  public disable(): void {
     this._settings = null as any
 
     if (this._timeoutId) {
