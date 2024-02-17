@@ -26,6 +26,7 @@ export default class CircularWidgetExtension extends Extension {
   enable(): void {
     this._settings = this.getSettings()
 
+    this._calendar = new Calendar(this._settings)
     this._clock = new Clock(this._settings)
     this._cpu = new Cpu(this._settings)
     this._netSpeed = new NetSpeed(this._settings)
