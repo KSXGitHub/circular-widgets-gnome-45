@@ -321,7 +321,7 @@ export class NetSpeed extends St.BoxLayout {
     return [x, y]
   }
 
-  setPosition() {
+  setPosition(): void {
     if (this._ignorePositionUpdate) {
       return
     }
@@ -396,7 +396,7 @@ export class NetSpeed extends St.BoxLayout {
   //   return this
   // }
 
-  _updateSettings() {
+  _updateSettings(): void {
     this._settings.connect('changed::circular-netspeed-location', () => this.setPosition())
     this._settings.connect('changed::netspeed-up-ring-color', () => this.update())
     this._settings.connect('changed::netspeed-up-ring-width', () => this.update())
