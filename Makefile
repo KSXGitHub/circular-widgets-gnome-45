@@ -1,5 +1,5 @@
 #=============================================================================
-UUID=$(shell cat src/metadata.json | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['uuid']);")
+UUID=$$(jq -r .uuid < src/metadata.json)
 SRCDIR=src
 BUILDDIR=build
 FILES=*.json *.js schemas *.css
