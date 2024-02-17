@@ -397,8 +397,6 @@ export class NetSpeed extends St.BoxLayout {
     this._settings.connect('changed::netspeed-text-position-y', () => this.update())
     this._settings.connect('changed::hide-netspeed-widget', () => this._toggleShow())
   }
-  //   },
-  // )
 }
 
 export default NetSpeed
