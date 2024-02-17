@@ -33,7 +33,7 @@ export class NetSpeed extends St.BoxLayout {
   private _actor: St.DrawingArea
   private _draggable: DND._Draggable
   private _size: number
-  private _currentUsage: { down: number; up: number }
+  private _currentUsage: { down: number, up: number }
   private _ignorePositionUpdate: boolean
   private isDragging: boolean
   private _dragMonitor: { dragMotion: any }
@@ -115,7 +115,8 @@ export class NetSpeed extends St.BoxLayout {
       0,
       this._settings.get_double('netspeed-down-ring-radius'),
       0,
-      (Number(this._controlSpd(this._currentUsage['down'])) / 1000) * this._settings.get_double('netspeed-ring-endpoint') *
+      (Number(this._controlSpd(this._currentUsage['down'])) / 1000) *
+        this._settings.get_double('netspeed-ring-endpoint') *
         Math.PI,
     )
     cr.stroke()
@@ -143,7 +144,8 @@ export class NetSpeed extends St.BoxLayout {
       0,
       this._settings.get_double('netspeed-up-ring-radius'),
       0,
-      (Number(this._controlSpd(this._currentUsage['up'])) / 1000) * this._settings.get_double('netspeed-ring-endpoint') *
+      (Number(this._controlSpd(this._currentUsage['up'])) / 1000) *
+        this._settings.get_double('netspeed-ring-endpoint') *
         Math.PI,
     )
     cr.stroke()
@@ -217,7 +219,7 @@ export class NetSpeed extends St.BoxLayout {
   }
 
   // See <https://github.com/AlynxZhou/gnome-shell-extension-net-speed>.
-  getCurrentNetSpeed(): { down: number; up: number } {
+  getCurrentNetSpeed(): { down: number, up: number } {
     const netSpeed = { down: 0, up: 0 }
 
     const inputFile = Gio.File.new_for_path('/proc/net/dev')
