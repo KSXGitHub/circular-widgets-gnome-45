@@ -1,7 +1,7 @@
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
 import Gdk from 'gi://Gdk'
-import Gio from 'gi://Gio'
+import type Gio from 'gi://Gio'
 import Mtk from 'gi://Mtk'
 import Pango from 'gi://Pango'
 import PangoCairo from 'gi://PangoCairo'

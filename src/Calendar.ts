@@ -1,7 +1,7 @@
 import Clutter from 'gi://Clutter'
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
-import Gio from 'gi://Gio'
+import type Gio from 'gi://Gio'
 import Mtk from 'gi://Mtk'
 import Shell from 'gi://Shell'
 import St from 'gi://St'
