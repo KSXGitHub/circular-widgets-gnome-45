@@ -9,7 +9,7 @@ import St from 'gi://St'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
-import { getWeekdayAbbr, getMonthName } from './dateUtils.js'
+import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 @GObject.registerClass
@@ -126,7 +126,7 @@ export class Calendar extends St.BoxLayout {
 
     this._buttons = []
 
-    let totalDays = this._daysInMonth(this._selectedDate.getMonth(), this._selectedDate.getFullYear())
+    let totalDays = daysInMonth(this._selectedDate.getMonth(), this._selectedDate.getFullYear())
 
     let firstDay = new Date(this._selectedDate.getFullYear(), this._selectedDate.getMonth(), 1)
 
@@ -139,7 +139,7 @@ export class Calendar extends St.BoxLayout {
 
       let styleClass = 'day-base'
 
-      if (this.sameDay(now, firstDay)) {
+      if (sameDay(now, firstDay)) {
         styleClass += ' today'
       }
 
@@ -152,15 +152,6 @@ export class Calendar extends St.BoxLayout {
       }
       firstDay.setDate(firstDay.getDate() + 1)
     }
-  }
-
-  private _daysInMonth(month: number, year: number): number {
-    let d = new Date(year, month + 1, 0)
-    return d.getDate()
-  }
-
-  private sameDay(a: Date, b: Date): boolean {
-    return a.getFullYear() == b.getFullYear() && a.getMonth() == b.getMonth() && a.getDate() == b.getDate()
   }
 
   private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
