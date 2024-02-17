@@ -62,6 +62,7 @@ export default class CircularWidgetExtension extends Extension {
     this._layoutManager._backgroundGroup.remove_child(this._cpu)
     this._layoutManager._backgroundGroup.remove_child(this._netSpeed)
     this._layoutManager._backgroundGroup.remove_child(this._ram)
+    this._layoutManager = null as any
 
     this._calendar = null as any
     this._clock = null as any
