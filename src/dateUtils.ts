@@ -17,4 +17,4 @@ export const MONTH_NAME = [
   'December',
 ] as const
 export type MonthName = typeof MONTH_NAME[number]
-export const getMonthName = (monthIndex: number) => MONTH_NAME[monthIndex % MONTH_NAME.length]
+export const getMonthName = (monthIndex: number): MonthName => MONTH_NAME[monthIndex % MONTH_NAME.length]
