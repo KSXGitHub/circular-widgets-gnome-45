@@ -23,7 +23,7 @@ build: deps
 	pnpm run build
 
 # compile the schemas
-all: clean, build
+all: clean build
 	mkdir -p $(BUILDDIR)/$(UUID)
 	cp -r dist/* $(BUILDDIR)/$(UUID)
 	@if [ -d $(BUILDDIR)/$(UUID)/schemas ]; then \
