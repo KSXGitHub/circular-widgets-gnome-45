@@ -103,7 +103,6 @@ export class Calendar extends St.BoxLayout {
         text: getWeekdayAbbr(i),
       })
       this._calendar.layout_manager.attach(label, i, 1, 1, 1)
-      // this._calendar.insert_child_at_index(label, i)
     }
 
     // All the children after this are days, and get removed when we update the calendar
