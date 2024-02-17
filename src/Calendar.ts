@@ -110,7 +110,7 @@ export class Calendar extends St.BoxLayout {
     this.setPosition()
   }
 
-  _toggleShow() {
+  _toggleShow(): void {
     this.remove_all_children()
     if (!this._settings.get_boolean('hide-calendar-widget')) {
       this.add_child(this._calendar)
@@ -120,7 +120,7 @@ export class Calendar extends St.BoxLayout {
     this.update()
   }
 
-  _buildHeader() {
+  _buildHeader(): void {
     // Top line of the calendar '<| September 2009 |>'
     this._topBox = new St.BoxLayout({})
     this._calendar.layout_manager.attach(this._topBox, 0, 0, 7, 1)
@@ -148,7 +148,7 @@ export class Calendar extends St.BoxLayout {
     this._firstDayIndex = this._calendar.get_n_children()
   }
 
-  update() {
+  update(): void {
     this._selectedDate = new Date()
     if (!this._monthLabel) {
       throw new TypeError('_mothLabel was not initialized correctly')
@@ -223,7 +223,7 @@ export class Calendar extends St.BoxLayout {
     return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
   }
 
-  _isOnScreen(x: number, y: number) {
+  _isOnScreen(x: number, y: number): boolean {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect)
 
@@ -243,7 +243,7 @@ export class Calendar extends St.BoxLayout {
     return [x, y]
   }
 
-  setPosition() {
+  setPosition(): void {
     if (this._ignorePositionUpdate) {
       return
     }
