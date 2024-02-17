@@ -22,4 +22,4 @@ make install
 
 ### Credits
 
-This is a fork of https://github.com/raihan2000/circular-widgets with GNOME 45 support.
+This is a fork of https://github.com/raihan2000/circular-widgets that supports (only) GNOME 45.
