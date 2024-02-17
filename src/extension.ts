@@ -24,27 +24,27 @@ export default class CircularWidgetExtension extends Extension {
   }
 
   enable(): void {
-    this._settings = this.getSettings()
+    const settings = this._settings = this.getSettings()
 
-    this._calendar = new Calendar(this._settings)
-    this._clock = new Clock(this._settings)
-    this._cpu = new Cpu(this._settings)
-    this._netSpeed = new NetSpeed(this._settings)
-    this._ram = new Ram(this._settings)
+    const calendar = this._calendar = new Calendar(settings)
+    const clock = this._clock = new Clock(settings)
+    const cpu = this._cpu = new Cpu(settings)
+    const netSpeed = this._netSpeed = new NetSpeed(settings)
+    const ram = this._ram = new Ram(settings)
 
-    this._layoutManager = Main.layoutManager as typeof this._layoutManager
-    this._layoutManager._backgroundGroup.add_child(this._calendar)
-    this._layoutManager._backgroundGroup.add_child(this._clock)
-    this._layoutManager._backgroundGroup.add_child(this._cpu)
-    this._layoutManager._backgroundGroup.add_child(this._netSpeed)
-    this._layoutManager._backgroundGroup.add_child(this._ram)
+    const layoutManager = this._layoutManager = Main.layoutManager as typeof this._layoutManager
+    layoutManager._backgroundGroup.add_child(calendar)
+    layoutManager._backgroundGroup.add_child(clock)
+    layoutManager._backgroundGroup.add_child(cpu)
+    layoutManager._backgroundGroup.add_child(netSpeed)
+    layoutManager._backgroundGroup.add_child(ram)
 
     this._timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-      this._calendar.update()
-      this._clock.update()
-      this._cpu.update()
-      this._netSpeed.update()
-      this._ram.update()
+      calendar.update()
+      clock.update()
+      cpu.update()
+      netSpeed.update()
+      ram.update()
       return GLib.SOURCE_CONTINUE
     })
   }
