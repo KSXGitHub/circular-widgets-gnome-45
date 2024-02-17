@@ -14,6 +14,7 @@ A GNOME Shell extension to provide conky like widgets on gnome shell with few cu
 **Requirements:**
 * [`node`](https://nodejs.org/)
 * [`pnpm`](https://pnpm.io/)
+* [`jq`](https://jqlang.github.io/jq/)
 * `make`
 
 ```sh
