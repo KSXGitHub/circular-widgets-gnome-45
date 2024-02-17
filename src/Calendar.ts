@@ -10,12 +10,11 @@ import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import getSettingPairNumbers from './getSettingPairNumbers.js'
+import { getWeekdayAbbr, getMonthName } from './dateNames.js'
 
 @GObject.registerClass
 export class Calendar extends St.BoxLayout {
-  private weekdayAbbr: string[]
   private _weekStart: number
-  private _Months: string[]
   private _settings: Gio.Settings
   private _calendar: Omit<St.Widget, 'layout_manager'> & {
     layout_manager: Clutter.GridLayout
@@ -43,22 +42,7 @@ export class Calendar extends St.BoxLayout {
     super({
       reactive: true,
     })
-    this.weekdayAbbr = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
     this._weekStart = Shell.util_get_week_start()
-    this._Months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ]
     this._settings = settings
 
     this._calendar = new St.Widget({
@@ -116,7 +100,7 @@ export class Calendar extends St.BoxLayout {
     for (let i = 0; i < 7; i++) {
       let label = new St.Label({
         style_class: 'weekday-label',
-        text: this.weekdayAbbr[i],
+        text: getWeekdayAbbr(i),
       })
       this._calendar.layout_manager.attach(label, i, 1, 1, 1)
       // this._calendar.insert_child_at_index(label, i)
@@ -131,7 +115,7 @@ export class Calendar extends St.BoxLayout {
     if (!this._monthLabel) {
       throw new TypeError('_mothLabel was not initialized correctly')
     }
-    this._monthLabel.text = this.getMonthsName(this._selectedDate.getMonth())
+    this._monthLabel.text = getMonthName(this._selectedDate.getMonth())
     let now = new Date()
     let children = this._calendar.get_children()
     if (!this._firstDayIndex) {
@@ -179,10 +163,6 @@ export class Calendar extends St.BoxLayout {
   private sameDay(dateA: Date, dateB: Date) {
     return dateA.getFullYear() == dateB.getFullYear() && (dateA.getMonth() == dateB.getMonth()) &&
       (dateA.getDate() == dateB.getDate())
-  }
-
-  private getMonthsName(date) {
-    return this._Months[date]
   }
 
   private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
