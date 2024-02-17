@@ -25,6 +25,7 @@ import Main from 'resource:///org/gnome/shell/ui/main.js'
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 // var Cpu = GObject.registerClass(
+@GObject.registerClass
 export class Cpu extends St.BoxLayout {
   private _settings: Gio.Settings
   private lastCPUTotal: number

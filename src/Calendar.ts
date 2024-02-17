@@ -31,6 +31,7 @@ import getSettingPairNumbers from './getSettingPairNumbers.js'
 //       super._init({
 //         reactive: true,
 //       })
+@GObject.registerClass
 export class Calendar extends St.BoxLayout {
   // export class calendarWidgets extends St.BoxLayout {
   private weekdayAbbr: string[]
