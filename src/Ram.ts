@@ -1,24 +1,13 @@
-// const { Clutter, GObject, GLib, Gio, PangoCairo, Pango, St, Meta, Shell, Gdk } = imports.gi
-import Clutter from 'gi://Clutter'
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
 import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
-import Meta from 'gi://Meta'
 import Mtk from 'gi://Mtk'
 import Pango from 'gi://Pango'
 import PangoCairo from 'gi://PangoCairo'
-import Shell from 'gi://Shell'
 import St from 'gi://St'
 import Cairo from 'gi://cairo'
 
-// const DND = imports.ui.dnd
-// const Cairo = imports.cairo
-// const ByteArray = imports.byteArray
-// const ExtensionUtils = imports.misc.extensionUtils
-// const Main = imports.ui.main
-import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
-import ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
@@ -36,10 +25,6 @@ export class Ram extends St.BoxLayout {
   private isDragging: boolean
   private _dragMonitor: DND._Draggable
 
-  // _init() {
-  //   super._init({
-  //     reactive: true,
-  //   })
   constructor(settings: Gio.Settings) {
     super({
       reactive: true,
@@ -335,8 +320,6 @@ export class Ram extends St.BoxLayout {
     this._settings.connect('changed::ram-inner-circle-radius', () => this.update())
     this._settings.connect('changed::hide-ram-widget', () => this._settingsChanged())
   }
-  //   },
-  // )
 }
 
 export default Ram
