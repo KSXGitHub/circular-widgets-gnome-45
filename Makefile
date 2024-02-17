@@ -19,8 +19,13 @@ clean:
 deps:
 	pnpm install --frozen-lockfile
 
-build: deps
-	pnpm run build
+tsc: deps
+	pnpm exec tsc
+
+assets:
+	node copy-assets.cjs
+
+build: deps assets tsc
 
 # compile the schemas
 all: clean build
