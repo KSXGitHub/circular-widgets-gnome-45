@@ -70,7 +70,7 @@ export class Clock extends St.BoxLayout {
     this.setPosition()
   }
 
-  _settingsChanged() {
+  _settingsChanged(): void {
     this.actor_init()
     this.remove_all_children()
     if (!this._settings.get_boolean('hide-clock-widget')) {
@@ -79,13 +79,13 @@ export class Clock extends St.BoxLayout {
     this.update()
   }
 
-  actor_init() {
+  actor_init(): void {
     this._size = this._settings.get_int('circular-clock-size')
     this._actor.height = this._size
     this._actor.width = this._size
   }
 
-  draw_stuff(area: St.DrawingArea) {
+  draw_stuff(area: St.DrawingArea): void {
     let cr = area.get_context()
     let [width, height] = area.get_surface_size()
 
@@ -248,13 +248,13 @@ export class Clock extends St.BoxLayout {
     cr.$dispose()
   }
 
-  update() {
+  update(): void {
     this._Gdate = GLib.DateTime.new_now_local()
     this.update_text()
     this._actor.queue_repaint()
   }
 
-  update_text() {
+  update_text(): void {
     this._Gsec = this._Gdate.format('%S')!
     this._Gmin = this._Gdate.format('%M')!
     this._Ghour = this._Gdate.format('%H')!
@@ -274,7 +274,7 @@ export class Clock extends St.BoxLayout {
     }
   }
 
-  text_show(cr: Cairo.Context, showtext: string, font: string) {
+  text_show(cr: Cairo.Context, showtext: string, font: string): void {
     let pl = PangoCairo.create_layout(cr)
     pl.set_text(showtext, -1)
     pl.set_font_description(Pango.FontDescription.from_string(font))
