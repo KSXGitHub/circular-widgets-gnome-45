@@ -5,6 +5,10 @@
   "type": "module",
   "license": "GPL-3.0-only",
   "sideEffects": false,
+  "scripts": {
+    "build": "tsc && pnpm run copy-assets",
+    "copy-assets": "node copy-assets.js"
+  },
   "dependencies": {
     "@girs/cairo-1.0": "^1.0.0-3.2.7",
     "@girs/clutter-13": "^13.0.0-3.2.7",
