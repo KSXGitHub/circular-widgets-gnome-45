@@ -1,4 +1,3 @@
-#=============================================================================
 UUID=$$(jq -r .uuid < src/metadata.json)
 SRCDIR=src
 BUILDDIR=build
@@ -9,7 +8,7 @@ ABS_MKFILE_PATH := $(abspath $(MKFILE_PATH))
 ABS_MKFILE_DIR := $(abspath $(MKFILE_DIR))
 ABS_BUILDDIR=$(ABS_MKFILE_DIR)/$(BUILDDIR)
 INSTALL_PATH=~/.local/share/gnome-shell/extensions
-#=============================================================================
+
 default_target: all
 .PHONY: clean all zip install
 
