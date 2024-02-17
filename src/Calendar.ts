@@ -134,7 +134,7 @@ export class Calendar extends St.BoxLayout {
     for (let i = 0; i < totalDays; i++) {
       let dateLabel = new St.Button({
         // label: firstDay.toLocaleFormat('%d'),
-        label: firstDay.getDay().toString(),
+        label: firstDay.getDate().toString(),
       })
 
       let styleClass = 'day-base'
