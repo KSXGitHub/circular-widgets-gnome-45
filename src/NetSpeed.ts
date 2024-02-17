@@ -36,7 +36,7 @@ export class NetSpeed extends St.BoxLayout {
   private _currentUsage: { down: number, up: number }
   private _ignorePositionUpdate: boolean
   private isDragging: boolean
-  private _dragMonitor: { dragMotion: any }
+  private _dragMonitor: DND._Draggable
 
   // _init() {
   constructor(settings: Gio.Settings) {
