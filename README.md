@@ -1,4 +1,4 @@
-### Circular Widgets
+## Circular Widgets
 
 A GNOME Shell extension to provide conky like widgets on gnome shell with few customization options, this extension aims to show system information on desktop.
 
