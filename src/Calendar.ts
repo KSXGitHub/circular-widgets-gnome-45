@@ -207,7 +207,7 @@ export class Calendar extends St.BoxLayout {
     return this._Months[date]
   }
 
-  _getMetaRectForCoords(x, y) {
+  _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
     this.get_allocation_box()
     // let rect = new Meta.Rectangle(0, 0, 0, 0)
     //
