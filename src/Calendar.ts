@@ -154,12 +154,12 @@ export class Calendar extends St.BoxLayout {
     }
   }
 
-  private _daysInMonth(month: number, year: number) {
+  private _daysInMonth(month: number, year: number): number {
     let d = new Date(year, month + 1, 0)
     return d.getDate()
   }
 
-  private sameDay(dateA: Date, dateB: Date) {
+  private sameDay(dateA: Date, dateB: Date): boolean {
     return dateA.getFullYear() == dateB.getFullYear() && (dateA.getMonth() == dateB.getMonth()) &&
       (dateA.getDate() == dateB.getDate())
   }
@@ -182,7 +182,7 @@ export class Calendar extends St.BoxLayout {
     return monitorWorkArea.contains_rect(rect)
   }
 
-  private _keepOnScreen(x: number, y: number) {
+  private _keepOnScreen(x: number, y: number): [number, number] {
     let rect = this._getMetaRectForCoords(x, y)
     let monitorWorkArea = this._getWorkAreaForRect(rect) // returns void?
 
