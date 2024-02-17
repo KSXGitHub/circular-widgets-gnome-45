@@ -9,7 +9,7 @@ import St from 'gi://St'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
-import { getWeekdayAbbr, getMonthName } from './dateNames.js'
+import { getWeekdayAbbr, getMonthName } from './dateUtils.js'
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 @GObject.registerClass
