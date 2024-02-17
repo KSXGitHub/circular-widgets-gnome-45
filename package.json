@@ -7,7 +7,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsc && pnpm run copy-assets",
-    "copy-assets": "node copy-assets.js"
+    "copy-assets": "node copy-assets.cjs"
   },
   "dependencies": {
     "@girs/cairo-1.0": "^1.0.0-3.2.7",
