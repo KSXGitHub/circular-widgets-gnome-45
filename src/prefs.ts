@@ -1,16 +1,9 @@
-'use strict'
-
-// const { Adw, Gio, Gtk, Gdk } = imports.gi
-// const Params = imports.misc.params
-// const ExtensionUtils = imports.misc.extensionUtils
-// const Me = ExtensionUtils.getCurrentExtension()
-
 import Adw from 'gi://Adw'
 import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
 import Gtk from 'gi://Gtk'
 
-import { ExtensionPreferences, gettext } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'
+import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'
 import { type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
 
 export default class CircularWidgetPreferences extends ExtensionPreferences {
