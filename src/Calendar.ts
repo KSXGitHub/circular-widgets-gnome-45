@@ -9,8 +9,8 @@ import St from 'gi://St'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
-import getSettingPairNumbers from './getSettingPairNumbers.js'
 import { getWeekdayAbbr, getMonthName } from './dateNames.js'
+import getSettingPairNumbers from './getSettingPairNumbers.js'
 
 @GObject.registerClass
 export class Calendar extends St.BoxLayout {
