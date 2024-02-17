@@ -319,8 +319,6 @@ export class Cpu extends St.BoxLayout {
     this._settings.connect('changed::cpu-inner-circle-radius', () => this.update())
     this._settings.connect('changed::hide-cpu-widget', () => this._settingsChanged())
   }
-  //   },
-  // )
 }
 
 export default Cpu
