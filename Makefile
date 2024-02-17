@@ -16,10 +16,16 @@ default_target: all
 clean:
 	rm -rf $(BUILDDIR)
 
+deps:
+	pnpm install --frozen-lockfile
+
+build: deps
+	pnpm run build
+
 # compile the schemas
-all: clean
+all: clean, build
 	mkdir -p $(BUILDDIR)/$(UUID)
-	cp -r src/* $(BUILDDIR)/$(UUID)
+	cp -r dist/* $(BUILDDIR)/$(UUID)
 	@if [ -d $(BUILDDIR)/$(UUID)/schemas ]; then \
 		glib-compile-schemas $(BUILDDIR)/$(UUID)/schemas; \
 	fi
@@ -33,7 +39,7 @@ zip: all
 	(cd $(BUILDDIR)/$(UUID); \
          zip -rq $(ABS_BUILDDIR)/$(UUID).zip $(FILES:%=%); \
         );
-        
+
 install: all
 	mkdir -p $(INSTALL_PATH)/$(UUID)
 	cp -R -p build/$(UUID)/* $(INSTALL_PATH)/$(UUID)
