@@ -159,9 +159,8 @@ export class Calendar extends St.BoxLayout {
     return d.getDate()
   }
 
-  private sameDay(dateA: Date, dateB: Date): boolean {
-    return dateA.getFullYear() == dateB.getFullYear() && (dateA.getMonth() == dateB.getMonth()) &&
-      (dateA.getDate() == dateB.getDate())
+  private sameDay(a: Date, b: Date): boolean {
+    return a.getFullYear() == b.getFullYear() && a.getMonth() == b.getMonth() && a.getDate() == b.getDate()
   }
 
   private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
