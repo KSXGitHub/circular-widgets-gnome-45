@@ -174,7 +174,7 @@ export class Calendar extends St.BoxLayout {
 
   private _keepOnScreen(x: number, y: number): [number, number] {
     let rect = this._getMetaRectForCoords(x, y)
-    let monitorWorkArea = this._getWorkAreaForRect(rect) // returns void?
+    let monitorWorkArea = this._getWorkAreaForRect(rect)
 
     let monitorRight = monitorWorkArea.x + monitorWorkArea.width
     let monitorBottom = monitorWorkArea.y + monitorWorkArea.height
