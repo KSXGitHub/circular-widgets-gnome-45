@@ -49,6 +49,8 @@ export default class CircularWidgetExtension extends Extension {
   }
 
   disable(): void {
+    this._settings = null as any
+
     if (this._timeoutId) {
       GLib.Source.remove(this._timeoutId)
       this._timeoutId = null
