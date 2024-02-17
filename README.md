@@ -11,6 +11,11 @@ Many feature will be added in the future
 
 ### Development
 
+**Requirements:**
+* [`node`](https://nodejs.org/)
+* [`pnpm`](https://pnpm.io/)
+* `make`
+
 ```sh
 make install
 ```
