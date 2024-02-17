@@ -117,7 +117,7 @@ export class Calendar extends St.BoxLayout {
     }
 
     this._buildHeader()
-    this._update()
+    this.update()
   }
 
   _buildHeader() {
@@ -148,7 +148,7 @@ export class Calendar extends St.BoxLayout {
     this._firstDayIndex = this._calendar.get_n_children()
   }
 
-  _update() {
+  update() {
     this._selectedDate = new Date()
     if (!this._monthLabel) {
       throw new TypeError('_mothLabel was not initialized correctly')
