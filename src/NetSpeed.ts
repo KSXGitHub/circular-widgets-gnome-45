@@ -75,9 +75,9 @@ export class NetSpeed extends St.BoxLayout {
     cr.setOperator(Cairo.Operator.OVER)
     cr.translate(width / 2, height / 2)
 
-    let fcolor = this._settings.get_string('netspeed-down-ring-color')
+    let fcolor = this._settings.get_string('netspeed-down-ring-color') ?? 'white'
     let color = new Gdk.RGBA()
-    color.parse(fcolor!)
+    color.parse(fcolor)
     cr.setSourceRGBA(color.red, color.green, color.blue, 0.3)
     cr.rotate(-this._settings.get_double('netspeed-ring-startpoint') * Math.PI)
     cr.save()
@@ -106,9 +106,9 @@ export class NetSpeed extends St.BoxLayout {
     cr.stroke()
 
     //netspeed upload speed ring
-    fcolor = this._settings.get_string('netspeed-up-ring-color')
+    fcolor = this._settings.get_string('netspeed-up-ring-color') ?? 'white'
     color = new Gdk.RGBA()
-    color.parse(fcolor!)
+    color.parse(fcolor)
     cr.setSourceRGBA(color.red, color.green, color.blue, 0.3)
     cr.setLineWidth(this._settings.get_double('netspeed-up-ring-width'))
     cr.save()
@@ -136,9 +136,9 @@ export class NetSpeed extends St.BoxLayout {
 
     // text
     cr.rotate(this._settings.get_double('netspeed-ring-startpoint') * Math.PI)
-    fcolor = this._settings.get_string('netspeed-text-color')
+    fcolor = this._settings.get_string('netspeed-text-color') ?? 'white'
     color = new Gdk.RGBA()
-    color.parse(fcolor!)
+    color.parse(fcolor)
     cr.setSourceRGBA(color.red, color.green, color.blue, color.alpha)
     cr.save()
     cr.moveTo(this._settings.get_int('netspeed-text-position-x'), this._settings.get_int('netspeed-text-position-y'))

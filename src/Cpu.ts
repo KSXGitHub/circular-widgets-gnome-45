@@ -76,9 +76,9 @@ export class Cpu extends St.BoxLayout {
     cr.setOperator(Cairo.Operator.OVER)
     cr.translate(width / 2, height / 2)
 
-    let fcolor = this._settings.get_string('cpu-line-color')
+    let fcolor = this._settings.get_string('cpu-line-color') ?? 'white'
     let color = new Gdk.RGBA()
-    color.parse(fcolor!)
+    color.parse(fcolor)
     cr.setSourceRGBA(color.red, color.green, color.blue, 0.3)
     cr.rotate(-this._settings.get_double('cpu-ring-startpoint') * Math.PI)
     cr.save()
@@ -111,9 +111,9 @@ export class Cpu extends St.BoxLayout {
 
     // text
     cr.rotate(this._settings.get_double('cpu-ring-startpoint') * Math.PI)
-    fcolor = this._settings.get_string('cpu-text-color')
+    fcolor = this._settings.get_string('cpu-text-color') ?? 'white'
     color = new Gdk.RGBA()
-    color.parse(fcolor!)
+    color.parse(fcolor)
     cr.setSourceRGBA(color.red, color.green, color.blue, color.alpha)
     cr.save()
     let font = this._settings.get_string('cpu-text-font')
