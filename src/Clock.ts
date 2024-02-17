@@ -1,30 +1,18 @@
-// const { Clutter, GObject, GLib, PangoCairo, Pango, St, Gio, Meta, Shell, Gdk } = imports.gi
-import Clutter from 'gi://Clutter'
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
 import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
-import Meta from 'gi://Meta'
 import Mtk from 'gi://Mtk'
 import Pango from 'gi://Pango'
 import PangoCairo from 'gi://PangoCairo'
-import Shell from 'gi://Shell'
 import St from 'gi://St'
 import Cairo from 'gi://cairo'
 
-// const DND = imports.ui.dnd
-// const Cairo = imports.cairo
-// const ExtensionUtils = imports.misc.extensionUtils
-// const Main = imports.ui.main
-import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
-import ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
-// var Clock = GObject.registerClass(
-//   class circleClock extends St.BoxLayout {
 @GObject.registerClass
 export class Clock extends St.BoxLayout {
   private _settings: Gio.Settings
@@ -44,11 +32,7 @@ export class Clock extends St.BoxLayout {
   private isDragging: boolean
   private _dragMonitor: { dragMotion: any }
 
-  // _init() {
   constructor(settings: Gio.Settings) {
-    // super._init({
-    //   reactive: true,
-    // })
     super({
       reactive: true,
     })
@@ -425,8 +409,6 @@ export class Clock extends St.BoxLayout {
     this._settings.connect('changed::clock-sec-hand-color', () => this.update())
     this._settings.connect('changed::hide-clock-widget', () => this._settingsChanged())
   }
-  //   },
-  // )
 }
 
 export default Clock

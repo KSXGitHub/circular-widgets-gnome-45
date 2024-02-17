@@ -1,39 +1,18 @@
-// const { Clutter, GObject, GLib, Gio, PangoCairo, Pango, St, Meta, Shell, Gdk } = imports.gi;
 import Clutter from 'gi://Clutter'
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
-import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
-import Meta from 'gi://Meta'
 import Mtk from 'gi://Mtk'
-import Pango from 'gi://Pango'
-import PangoCairo from 'gi://PangoCairo'
 import Shell from 'gi://Shell'
 import St from 'gi://St'
-import Cairo from 'gi://cairo'
 
-// const DND = imports.ui.dnd;
-// const Cairo = imports.cairo;
-// const ByteArray = imports.byteArray;
-// const ExtensionUtils = imports.misc.extensionUtils;
-// const Main = imports.ui.main;
-
-import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
-import ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js'
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 
-// var calendar = GObject.registerClass(
-//   class calendarWidgets extends St.BoxLayout {
-//     _init() {
-//       super._init({
-//         reactive: true,
-//       })
 @GObject.registerClass
 export class Calendar extends St.BoxLayout {
-  // export class calendarWidgets extends St.BoxLayout {
   private weekdayAbbr: string[]
   private _weekStart: number
   private _Months: string[]
@@ -80,7 +59,6 @@ export class Calendar extends St.BoxLayout {
       'November',
       'December',
     ]
-    // this._settings = ExtensionUtils.getSettings()
     this._settings = settings
 
     this._calendar = new St.Widget({
@@ -209,11 +187,6 @@ export class Calendar extends St.BoxLayout {
 
   _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
     this.get_allocation_box()
-    // let rect = new Meta.Rectangle(0, 0, 0, 0)
-    //
-    // ;[rect.x, rect.y] = [x, y]
-    // ;[rect.width, rect.height] = this.get_transformed_size()
-    // return rect
     const [width, height] = this.get_transformed_size()
     return new Mtk.Rectangle(x, y, width, height)
   }
@@ -324,7 +297,5 @@ export class Calendar extends St.BoxLayout {
   //   return this
   // }
 }
-//   },
-// )
 
 export default Calendar

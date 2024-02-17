@@ -2,7 +2,7 @@ import GLib from 'gi://GLib'
 import Gio from 'gi://Gio'
 import type Meta from 'gi://Meta'
 
-import { Extension, type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js'
 import Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import Calendar from './Calendar.js'
