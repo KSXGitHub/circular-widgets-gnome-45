@@ -270,7 +270,7 @@ export class Clock extends St.BoxLayout {
   }
 
   private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
-    const box = this.get_allocation_box()
+    this.get_allocation_box()
     const [width, height] = this.get_transformed_size()
     return new Mtk.Rectangle(x, y, width, height)
   }
