@@ -7,7 +7,7 @@ import Shell from 'gi://Shell'
 import St from 'gi://St'
 
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
-import Main from 'resource:///org/gnome/shell/ui/main.js'
+import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
 import getSettingPairNumbers from './getSettingPairNumbers.js'

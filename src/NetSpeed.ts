@@ -9,7 +9,7 @@ import St from 'gi://St'
 import Cairo from 'gi://cairo'
 
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
-import Main from 'resource:///org/gnome/shell/ui/main.js'
+import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import getSettingPairNumbers from './getSettingPairNumbers.js'
 

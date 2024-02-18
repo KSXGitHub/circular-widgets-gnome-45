@@ -3,7 +3,7 @@ import type Gio from 'gi://Gio'
 import type Meta from 'gi://Meta'
 
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js'
-import Main from 'resource:///org/gnome/shell/ui/main.js'
+import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import Calendar from './Calendar.js'
 import Clock from './Clock.js'
