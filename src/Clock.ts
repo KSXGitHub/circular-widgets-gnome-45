@@ -306,6 +306,7 @@ export class Clock extends St.BoxLayout {
     }
 
     let [x, y] = getSettingPairNumbers(this._settings, 'circular-clock-location')
+    this.set_position(x, y)
 
     if (!this.get_parent()) {
       return
