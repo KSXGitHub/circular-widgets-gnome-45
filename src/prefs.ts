@@ -7,7 +7,7 @@ import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/
 import { type ExtensionMetadata } from 'resource:///org/gnome/shell/extensions/extension.js'
 
 export default class CircularWidgetPreferences extends ExtensionPreferences {
-  fillPreferencesWindow(window: Adw.PreferencesWindow) {
+  public fillPreferencesWindow(window: Adw.PreferencesWindow): void {
     const settings = this.getSettings('org.gnome.shell.extensions.circular')
     const prefs = new PrefsWindow(window, settings, this.metadata)
     prefs.fillPrefsWindow()
