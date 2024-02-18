@@ -6,8 +6,8 @@ import St from 'gi://St'
 
 import type DND from 'resource:///org/gnome/shell/ui/dnd.js'
 
-import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
 import WidgetBase from './WidgetBase.js'
+import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
 
 @GObject.registerClass
 export class Calendar extends WidgetBase {

@@ -1,9 +1,9 @@
+import Clutter from 'gi://Clutter'
 import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
 import type Gio from 'gi://Gio'
 import Mtk from 'gi://Mtk'
 import St from 'gi://St'
-import Clutter from 'gi://Clutter'
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
