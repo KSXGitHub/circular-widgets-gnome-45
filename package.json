@@ -25,7 +25,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@girs/cairo-1.0@1.0.0-3.2.7": "patches/@girs__cairo-1.0@1.0.0-3.2.7.patch"
+      "@girs/cairo-1.0@1.0.0-3.2.7": "patches/@girs__cairo-1.0@1.0.0-3.2.7.patch",
+      "@girs/st-13@13.0.0-3.2.7": "patches/@girs__st-13@13.0.0-3.2.7.patch"
     }
   }
 }

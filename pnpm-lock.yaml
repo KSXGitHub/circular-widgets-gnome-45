@@ -8,6 +8,9 @@ patchedDependencies:
   '@girs/cairo-1.0@1.0.0-3.2.7':
     hash: 4nmwskcak474c2czzgxnalveau
     path: patches/@girs__cairo-1.0@1.0.0-3.2.7.patch
+  '@girs/st-13@13.0.0-3.2.7':
+    hash: 265pigm5jnibicwrvluok4mcsu
+    path: patches/@girs__st-13@13.0.0-3.2.7.patch
 
 dependencies:
   '@girs/cairo-1.0':
@@ -48,7 +51,7 @@ dependencies:
     version: 13.0.0-3.2.7
   '@girs/st-13':
     specifier: ^13.0.0-3.2.7
-    version: 13.0.0-3.2.7
+    version: 13.0.0-3.2.7(patch_hash=265pigm5jnibicwrvluok4mcsu)
 
 devDependencies:
   typescript:
@@ -313,7 +316,7 @@ packages:
       '@girs/polkit-1.0': 1.0.0-3.2.7
       '@girs/shell-13': 13.0.0-3.2.7
       '@girs/shew-0': 0.0.0-3.2.7
-      '@girs/st-13': 13.0.0-3.2.7
+      '@girs/st-13': 13.0.0-3.2.7(patch_hash=265pigm5jnibicwrvluok4mcsu)
       '@girs/upowerglib-1.0': 0.99.1-3.2.7
     dev: false
 
@@ -555,7 +558,7 @@ packages:
       '@girs/pangocairo-1.0': 1.0.0-3.2.7
       '@girs/polkit-1.0': 1.0.0-3.2.7
       '@girs/polkitagent-1.0': 1.0.0-3.2.7
-      '@girs/st-13': 13.0.0-3.2.7
+      '@girs/st-13': 13.0.0-3.2.7(patch_hash=265pigm5jnibicwrvluok4mcsu)
       '@girs/xfixes-4.0': 4.0.0-3.2.7
       '@girs/xlib-2.0': 2.0.0-3.2.7
     dev: false
@@ -580,7 +583,7 @@ packages:
       '@girs/pangocairo-1.0': 1.0.0-3.2.7
     dev: false
 
-  /@girs/st-13@13.0.0-3.2.7:
+  /@girs/st-13@13.0.0-3.2.7(patch_hash=265pigm5jnibicwrvluok4mcsu):
     resolution: {integrity: sha512-v39kFYYY3arbNELzseoRuKkN9hJIJG7ZpFbTGwRuB2pB1sfku3WJpfHPALwPg0uCvpDfSTfxTZ2Fg6R3qFWEdA==}
     dependencies:
       '@girs/atk-1.0': 2.50.0-3.2.7
@@ -608,6 +611,7 @@ packages:
       '@girs/xfixes-4.0': 4.0.0-3.2.7
       '@girs/xlib-2.0': 2.0.0-3.2.7
     dev: false
+    patched: true
 
   /@girs/upowerglib-1.0@0.99.1-3.2.7:
     resolution: {integrity: sha512-Ss0U2Q6lQ+aLVnddfulAvBJJjwpckV92Z3ivSDZ4VeCqi0dsiInVHlmHUC58Yb/A7EuCplL97hHax4orAgvAFQ==}

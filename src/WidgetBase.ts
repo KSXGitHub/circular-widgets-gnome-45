@@ -3,6 +3,7 @@ import GObject from 'gi://GObject'
 import type Gio from 'gi://Gio'
 import Mtk from 'gi://Mtk'
 import St from 'gi://St'
+import Clutter from 'gi://Clutter'
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
@@ -60,12 +61,12 @@ export abstract class WidgetBase extends St.BoxLayout {
     if (!this._isOnScreen(x, y)) {
       ;[x, y] = this._keepOnScreen(x, y)
 
-      // this.ease({
-      //   x,
-      //   y,
-      //   duration: 150,
-      //   mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-      // })
+      this.ease({
+        x,
+        y,
+        duration: 150,
+        mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+      })
 
       this._ignorePositionUpdate = true
       this._settings.set_value(this.LOCATION_SETTING_KEY, new GLib.Variant('(ii)', [x, y]))
