@@ -7,7 +7,7 @@ import PangoCairo from 'gi://PangoCairo'
 import St from 'gi://St'
 import Cairo from 'gi://cairo'
 
-import DND from 'resource:///org/gnome/shell/ui/dnd.js'
+import type DND from 'resource:///org/gnome/shell/ui/dnd.js'
 
 import WidgetBase from './WidgetBase.js'
 

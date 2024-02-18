@@ -4,7 +4,7 @@ import type Gio from 'gi://Gio'
 import Shell from 'gi://Shell'
 import St from 'gi://St'
 
-import DND from 'resource:///org/gnome/shell/ui/dnd.js'
+import type DND from 'resource:///org/gnome/shell/ui/dnd.js'
 
 import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
 import WidgetBase from './WidgetBase.js'
