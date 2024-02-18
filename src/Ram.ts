@@ -1,27 +1,24 @@
-import GLib from 'gi://GLib'
 import GObject from 'gi://GObject'
 import Gdk from 'gi://Gdk'
 import Gio from 'gi://Gio'
-import Mtk from 'gi://Mtk'
 import Pango from 'gi://Pango'
 import PangoCairo from 'gi://PangoCairo'
 import St from 'gi://St'
 import Cairo from 'gi://cairo'
 
 import DND from 'resource:///org/gnome/shell/ui/dnd.js'
-import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
-import getSettingPairNumbers from './getSettingPairNumbers.js'
+import WidgetBase from './WidgetBase.js'
 
 // var Ram = GObject.registerClass(
 @GObject.registerClass
-export class Ram extends St.BoxLayout {
-  private _settings: Gio.Settings
+export class Ram extends WidgetBase {
+  protected readonly LOCATION_SETTING_KEY = 'circular-ram-location'
+
   private _actor: St.DrawingArea
   private _draggable: DND._Draggable
   private _size: number
   private current_ram: number
-  private _ignorePositionUpdate: boolean
   private isDragging: boolean
   private _dragMonitor: DND._Draggable
 
@@ -192,66 +189,6 @@ export class Ram extends St.BoxLayout {
     cr.relMoveTo(-w / 2, 0)
     PangoCairo.show_layout(cr, pl)
     cr.relMoveTo(w / 2, 0)
-  }
-
-  private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
-    this.get_allocation_box()
-    const [width, height] = this.get_transformed_size()
-    return new Mtk.Rectangle(x, y, width, height)
-  }
-
-  private _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
-    let monitorIndex = global.display.get_monitor_index_for_rect(rect)
-    return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
-  }
-
-  private _isOnScreen(x: number, y: number): boolean {
-    let rect = this._getMetaRectForCoords(x, y)
-    let monitorWorkArea = this._getWorkAreaForRect(rect)
-
-    return monitorWorkArea.contains_rect(rect)
-  }
-
-  private _keepOnScreen(x: number, y: number): [number, number] {
-    let rect = this._getMetaRectForCoords(x, y)
-    let monitorWorkArea = this._getWorkAreaForRect(rect)
-
-    let monitorRight = monitorWorkArea.x + monitorWorkArea.width
-    let monitorBottom = monitorWorkArea.y + monitorWorkArea.height
-
-    x = Math.min(Math.max(monitorWorkArea.x, x), monitorRight - rect.width)
-    y = Math.min(Math.max(monitorWorkArea.y, y), monitorBottom - rect.height)
-
-    return [x, y]
-  }
-
-  private setPosition(): void {
-    if (this._ignorePositionUpdate) {
-      return
-    }
-
-    // let [x, y] = this._settings.get_value('circular-ram-location').deep_unpack()
-    let [x, y] = getSettingPairNumbers(this._settings, 'circular-ram-location')
-    this.set_position(x, y)
-
-    if (!this.get_parent()) {
-      return
-    }
-
-    if (!this._isOnScreen(x, y)) {
-      ;[x, y] = this._keepOnScreen(x, y)
-
-      // this.ease({
-      //   x,
-      //   y,
-      //   duration: 150,
-      //   mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-      // })
-
-      this._ignorePositionUpdate = true
-      this._settings.set_value('circular-ram-location', new GLib.Variant('(ii)', [x, y]))
-      this._ignorePositionUpdate = false
-    }
   }
 
   // _onDragBegin() {

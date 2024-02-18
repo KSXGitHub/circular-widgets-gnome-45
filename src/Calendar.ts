@@ -10,12 +10,13 @@ import DND from 'resource:///org/gnome/shell/ui/dnd.js'
 import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 
 import { getWeekdayAbbr, getMonthName, daysInMonth, sameDay } from './dateUtils.js'
-import getSettingPairNumbers from './getSettingPairNumbers.js'
+import WidgetBase from './WidgetBase.js'
 
 @GObject.registerClass
-export class Calendar extends St.BoxLayout {
+export class Calendar extends WidgetBase {
+  protected readonly LOCATION_SETTING_KEY = 'calendar-location'
+
   private _weekStart: number
-  private _settings: Gio.Settings
   private _calendar: Omit<St.Widget, 'layout_manager'> & {
     layout_manager: Clutter.GridLayout
   }
@@ -25,7 +26,6 @@ export class Calendar extends St.BoxLayout {
   private _firstDayIndex: number
   private _selectedDate: Date
   private _buttons: []
-  private _ignorePositionUpdate: boolean
   private isDragging: boolean
   private _dragMonitor: DND._Draggable | null
   private startX: number
@@ -151,65 +151,6 @@ export class Calendar extends St.BoxLayout {
         row++
       }
       firstDay.setDate(firstDay.getDate() + 1)
-    }
-  }
-
-  private _getMetaRectForCoords(x: number, y: number): Mtk.Rectangle {
-    this.get_allocation_box()
-    const [width, height] = this.get_transformed_size()
-    return new Mtk.Rectangle(x, y, width, height)
-  }
-
-  private _getWorkAreaForRect(rect: Mtk.Rectangle): Mtk.Rectangle {
-    let monitorIndex = global.display.get_monitor_index_for_rect(rect)
-    return Main.layoutManager.getWorkAreaForMonitor(monitorIndex)
-  }
-
-  private _isOnScreen(x: number, y: number): boolean {
-    let rect = this._getMetaRectForCoords(x, y)
-    let monitorWorkArea = this._getWorkAreaForRect(rect)
-
-    return monitorWorkArea.contains_rect(rect)
-  }
-
-  private _keepOnScreen(x: number, y: number): [number, number] {
-    let rect = this._getMetaRectForCoords(x, y)
-    let monitorWorkArea = this._getWorkAreaForRect(rect)
-
-    let monitorRight = monitorWorkArea.x + monitorWorkArea.width
-    let monitorBottom = monitorWorkArea.y + monitorWorkArea.height
-
-    x = Math.min(Math.max(monitorWorkArea.x, x), monitorRight - rect.width)
-    y = Math.min(Math.max(monitorWorkArea.y, y), monitorBottom - rect.height)
-
-    return [x, y]
-  }
-
-  private setPosition(): void {
-    if (this._ignorePositionUpdate) {
-      return
-    }
-
-    let [x, y] = getSettingPairNumbers(this._settings, 'calendar-location')
-    this.set_position(x, y)
-
-    if (!this.get_parent()) {
-      return
-    }
-
-    if (!this._isOnScreen(x, y)) {
-      ;[x, y] = this._keepOnScreen(x, y)
-
-      // this.ease({
-      //   x,
-      //   y,
-      //   duration: 150,
-      //   mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-      // })
-
-      this._ignorePositionUpdate = true
-      this._settings.set_value('calendar-location', new GLib.Variant('(ii)', [x, y]))
-      this._ignorePositionUpdate = false
     }
   }
 
