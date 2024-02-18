@@ -6,19 +6,19 @@
   "license": "GPL-3.0-only",
   "sideEffects": false,
   "dependencies": {
-    "@girs/cairo-1.0": "^1.0.0-3.2.7",
-    "@girs/clutter-13": "^13.0.0-3.2.7",
-    "@girs/gdk-4.0": "^4.0.0-3.2.7",
-    "@girs/gio-2.0": "^2.78.0-3.2.7",
-    "@girs/gjs": "^3.2.7",
-    "@girs/glib-2.0": "^2.78.0-3.2.7",
-    "@girs/gnome-shell": "^45.0.0-beta9",
-    "@girs/gobject-2.0": "^2.78.0-3.2.7",
-    "@girs/meta-13": "^13.0.0-3.2.7",
-    "@girs/pango-1.0": "^1.51.0-3.2.7",
-    "@girs/pangocairo-1.0": "^1.0.0-3.2.7",
-    "@girs/shell-13": "^13.0.0-3.2.7",
-    "@girs/st-13": "^13.0.0-3.2.7"
+    "@girs/cairo-1.0": "=1.0.0-3.2.7",
+    "@girs/clutter-13": "=13.0.0-3.2.7",
+    "@girs/gdk-4.0": "=4.0.0-3.2.7",
+    "@girs/gio-2.0": "=2.78.0-3.2.7",
+    "@girs/gjs": "=3.2.7",
+    "@girs/glib-2.0": "=2.78.0-3.2.7",
+    "@girs/gnome-shell": "=45.0.0-beta9",
+    "@girs/gobject-2.0": "=2.78.0-3.2.7",
+    "@girs/meta-13": "=13.0.0-3.2.7",
+    "@girs/pango-1.0": "=1.51.0-3.2.7",
+    "@girs/pangocairo-1.0": "=1.0.0-3.2.7",
+    "@girs/shell-13": "=13.0.0-3.2.7",
+    "@girs/st-13": "=13.0.0-3.2.7"
   },
   "devDependencies": {
     "typescript": "^5.3.3"

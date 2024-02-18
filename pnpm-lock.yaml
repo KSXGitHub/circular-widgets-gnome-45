@@ -14,43 +14,43 @@ patchedDependencies:
 
 dependencies:
   '@girs/cairo-1.0':
-    specifier: ^1.0.0-3.2.7
+    specifier: '=1.0.0-3.2.7'
     version: 1.0.0-3.2.7(patch_hash=4nmwskcak474c2czzgxnalveau)
   '@girs/clutter-13':
-    specifier: ^13.0.0-3.2.7
+    specifier: '=13.0.0-3.2.7'
     version: 13.0.0-3.2.7
   '@girs/gdk-4.0':
-    specifier: ^4.0.0-3.2.7
+    specifier: '=4.0.0-3.2.7'
     version: 4.0.0-3.2.7
   '@girs/gio-2.0':
-    specifier: ^2.78.0-3.2.7
+    specifier: '=2.78.0-3.2.7'
     version: 2.78.0-3.2.7
   '@girs/gjs':
-    specifier: ^3.2.7
+    specifier: '=3.2.7'
     version: 3.2.7
   '@girs/glib-2.0':
-    specifier: ^2.78.0-3.2.7
+    specifier: '=2.78.0-3.2.7'
     version: 2.78.0-3.2.7
   '@girs/gnome-shell':
-    specifier: ^45.0.0-beta9
+    specifier: '=45.0.0-beta9'
     version: 45.0.0-beta9
   '@girs/gobject-2.0':
-    specifier: ^2.78.0-3.2.7
+    specifier: '=2.78.0-3.2.7'
     version: 2.78.0-3.2.7
   '@girs/meta-13':
-    specifier: ^13.0.0-3.2.7
+    specifier: '=13.0.0-3.2.7'
     version: 13.0.0-3.2.7
   '@girs/pango-1.0':
-    specifier: ^1.51.0-3.2.7
+    specifier: '=1.51.0-3.2.7'
     version: 1.51.0-3.2.7
   '@girs/pangocairo-1.0':
-    specifier: ^1.0.0-3.2.7
+    specifier: '=1.0.0-3.2.7'
     version: 1.0.0-3.2.7
   '@girs/shell-13':
-    specifier: ^13.0.0-3.2.7
+    specifier: '=13.0.0-3.2.7'
     version: 13.0.0-3.2.7
   '@girs/st-13':
-    specifier: ^13.0.0-3.2.7
+    specifier: '=13.0.0-3.2.7'
     version: 13.0.0-3.2.7(patch_hash=265pigm5jnibicwrvluok4mcsu)
 
 devDependencies:
