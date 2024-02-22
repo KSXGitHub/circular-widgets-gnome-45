@@ -4,6 +4,7 @@
     "moduleResolution": "NodeNext",
     "strict": false,
     "strictNullChecks": true,
+    "rootDir": "src",
     "outDir": "dist",
     "resolveJsonModule": true,
     "experimentalDecorators": true,
