@@ -6,6 +6,8 @@
     "strictNullChecks": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
   }
 }
