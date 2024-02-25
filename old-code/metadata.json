@@ -1,9 +1,0 @@
-{
-  "description": "Conky Like widgets but with few customization options",
-  "name": "Circular Widgets",
-  "settings-schema": "org.gnome.shell.extensions.circular",
-  "shell-version": ["45"],
-  "url": "https://github.com/raihan2000/circular-widgets",
-  "uuid": "circular@widgets.io",
-  "version": 5
-}
