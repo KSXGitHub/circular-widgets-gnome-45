@@ -16,10 +16,10 @@ clean:
 	rm -rf $(BUILDDIR)
 
 deps:
-	pnpm install --frozen-lockfile
+	corepack pnpm install --frozen-lockfile
 
 tsc: deps
-	pnpm exec tsc
+	corepack pnpm exec tsc
 
 assets:
 	node copy-assets.cjs
