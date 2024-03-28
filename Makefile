@@ -13,6 +13,7 @@ default_target: all
 .PHONY: clean all zip install
 
 clean:
+	rm .tsbuildinfo
 	rm -rf $(BUILDDIR)
 
 deps:
