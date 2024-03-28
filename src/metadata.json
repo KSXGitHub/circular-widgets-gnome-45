@@ -4,6 +4,6 @@
   "settings-schema": "org.gnome.shell.extensions.circular",
   "shell-version": ["45"],
   "url": "https://github.com/KSXGitHub/circular-widgets-gnome-45.git",
-  "uuid": "circular@widgets.io",
+  "uuid": "circular@KSXGitHub",
   "version": 6
 }
